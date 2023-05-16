@@ -13,6 +13,11 @@
 alias sp='systemctl suspend'
 alias rt='systemctl reboot'
 
+# systemd
+alias srvst='sudo systemctl start backup_joplin.service'
+alias drd='sudo systemctl daemon-reload'
+alias srvss='systemctl status backup_joplin.service'
+
 # user group
 alias csg='cat /etc/group | grep cs'  # в каких группах состоит пользователь cs
 
@@ -29,8 +34,14 @@ alias alaed='nvim ~/.aliases/arc'
 alias alp='alias -p'
 alias src='source ~/.bashrc'
 
+# Size
 # вычисляет и выводит размеры файлов и каталогов в рабочей директории
-alias sz='du -d 1 -h | sort -h'
+alias dfsys='btrfs filesystem df /'   # для btrfs на системном
+alias ussys='sudo btrfs filesystem usage /'  # подробнее, но от рута запускать надо
+alias duhome='du -sh /home'  # размер домашнего каталога в Гб; если добавить -m или -k - в Мб или Кб
+alias dusort='du -d 1 -h | sort -h'  # сортировка по размеру каталогов
+# отфильтровать маленькие файлы, остальные сортировать по размеру; +G - в выводе тяжелее 1 Гб
+alias dusortf='du -h /home | grep '^\s*[0-9\.]\+M' | sort -rn' 
 
 # man yandex-disk - на русском: stop, start, publish, unpublish
 alias yk='yandex-disk status'
@@ -41,6 +52,7 @@ alias la='ls -a'
 alias lah='ls -lah'
 
 alias h='history | grep'
+alias h='tail ~/.bash_history'
 
 # Fedora
 alias ups='sudo dnf update'                    
@@ -53,6 +65,10 @@ alias lil='dnf list installed | grep'
 alias py='python3'
 # pip --version; ups; pip list; обновить пакет $1
 alias pipup='pip install --user -U $1'
+
+#    НАВИГАЦИЯ
+
+alias cdy='cd /media/sf__shr/ytb' # для шары виртуальной машины
 
 #    NET
 

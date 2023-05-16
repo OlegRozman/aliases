@@ -1,0 +1,19 @@
+#!/bin/sh
+
+alias trdl='trash-put ~/download/*.torrent'
+
+alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
+
+#    BACKUP
+
+# restic
+alias rbt='restic -r /mnt/ext-2Tb/bkp_torrent/backup-repo --verbose backup /mnt/torrent --exclude-file /mnt/ext-2Tb/bkp_torrent/excludes.txt'
+alias rbd='restic -r /mnt/ext-2Tb/bkp_data/backup-repo --verbose backup --files-from /mnt/ext-2Tb/bkp_data/list_bkp.txt --exclude-caches --exclude-file /mnt/ext-2Tb/bkp_data/excludes.txt'
+
+# snapshots, unlock, check, prune, mount ~/restic, forget qw90j8ce, forget --keep-last 5 --prune
+alias rt='restic -r /mnt/ext-2Tb/bkp_torrent/backup-repo'
+alias rd='restic -r /mnt/ext-2Tb/bkp_data/backup-repo'
+alias rj='restic -r /mnt/data/bkp/joplin/backup-repo'
+alias rs='restic -r /mnt/sams25/backup-repo'
+
+
