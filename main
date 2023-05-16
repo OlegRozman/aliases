@@ -27,10 +27,14 @@ alias rmm='trash-put $1'
 # config
 alias al='alias | bat'
 alias all='bat ~/.aliases/main'
+alias alh='bat ~/.aliases/home'
+alias alj='bat ~/.aliases/job'
 alias ala='bat ~/.aliases/arc'
-alias alssh='bat ~/.ssh/config' # псевдонимы для ssh подключений
 alias alled='nvim ~/.aliases/main' 
+alias alhed='nvim ~/.aliases/home'
+alias aljed='nvim ~/.aliases/job'
 alias alaed='nvim ~/.aliases/arc' 
+alias alssh='bat ~/.ssh/config' # псевдонимы для ssh подключений
 alias alp='alias -p'
 alias src='source ~/.bashrc'
 

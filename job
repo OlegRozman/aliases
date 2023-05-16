@@ -1,8 +1,5 @@
 #!/bin/sh
 
-alias alj='bat ~/.aliases/job'
-alias aljed='nvim ~/.aliases/job'
-
 alias torr='trash-put ~/Загрузки/*.torrent'
 
 #    BACKUP
