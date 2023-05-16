@@ -1,0 +1,25 @@
+#!/bin/sh
+
+alias alj='bat ~/.aliases/job'
+alias aljed='nvim ~/.aliases/job'
+
+alias torr='trash-put ~/Загрузки/*.torrent'
+
+#    BACKUP
+
+# restic
+alias rbs='restic -r /run/media/cs/Sams25/backup-repo --verbose backup --files-from /run/media/cs/Sams25/list_bkp.txt --exclude-caches --exclude-file /run/media/cs/Sams25/excludes.txt'
+alias rs-vm='rsync -avzh /mnt/vm/Win10_luks /run/media/cs/Sams25/vm'
+alias rbj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo --verbose backup --password-file /mnt/data/sys/bkp/Joplin/passwd.txt /home/cs/.config/joplin-desktop/'
+alias rbj-forget='restic -r /mnt/data/sys/bkp/Joplin/backup-repo forget --keep-last 20 --prune'
+
+# snapshots, unlock, check, prune, mount ~/restic, forget qw90j8ce, forget --keep-last 5 --prune
+alias rts='restic -r /run/media/cs/Sams25/backup-repo'
+alias rtj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo'
+alias rtf='restic -r ./backup-repo forget --keep-last $1 --prune'
+
+#    НАВИГАЦИЯ
+
+alias cdy='cd /media/sf__shr/ytb' # для шары виртуальной машины
+
+

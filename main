@@ -1,0 +1,121 @@
+#!/bin/sh
+
+#    СИСТЕМА
+
+alias sp='systemctl suspend'
+alias rt='systemctl reboot'
+
+# user group
+alias csg='cat /etc/group | grep cs'  # в каких группах состоит пользователь cs
+
+# корзина
+alias rmm='trash-put $1'
+
+# config
+alias al='alias | bat'
+alias all='bat ~/.aliases/main'
+alias ala='bat ~/.aliases/arc'
+alias alssh='bat ~/.ssh/config' # псевдонимы для ssh подключений
+alias alled='nvim ~/.aliases/main' 
+alias alaed='nvim ~/.aliases/arc' 
+alias alp='alias -p'
+alias src='source ~/.bashrc'
+
+# вычисляет и выводит размеры файлов и каталогов в рабочей директории
+alias sz='du -d 1 -h | sort -h'
+
+# man yandex-disk - на русском: stop, start, publish, unpublish
+alias yk='yandex-disk status'
+
+alias l='ls -CF'
+alias ll='ls -l'
+alias la='ls -a'
+alias lah='ls -lah'
+
+alias h='history | grep'
+
+# Fedora
+alias ups='sudo dnf update'                    
+alias ill='sudo dnf install'
+alias rmv='sudo dnf remove $1 && sudo dnf autoremove'
+alias lil='dnf list installed | grep'
+
+#    PYTHON
+
+alias py='python3'
+# pip --version; ups; pip list; обновить пакет $1
+alias pipup='pip install --user -U $1'
+
+#    NET
+
+alias whis='curl cli.fyi/$1' # whis -> whois - сервис - см. закладка на github
+
+alias sited='wget --mirror -p --convert-links -P'
+    # wget --mirror -p --convert-links -P /home/dan xyz.com
+    # -p загрузка всех файлов, необходимых для отображения страниц
+    # --convert-links: ссылки будут преобразованы для локального просмотра сайта
+    # -P /home/dan: материалы будут сохранены в папку /home/dan
+
+alias flush='sudo systemd-resolve --flush-caches'
+
+
+#    АРХИВАЦИЯ И ШИФРОВАНИЕ
+alias pk='tar -czvf $1.tar.gz $1'
+alias upk='tar -xzvf $1'
+
+alias gpk='tar -czvf - $1 | gpg -c > $1.tar.gz.gpg'
+alias ugpk='gpg -d $1 | tar -xzvf -'
+
+#    КОНВЕРТАЦИИ
+
+# список исходных кодировок iconv -l, в команде работает tab, чтобы не опечататься
+# узнать кондировку - file file.txt или file -i file.txt ; второе почему-то не распознало ASCII
+alias wintoutf='iconv -f WINDOWS-1251 -t UTF-8 -o $1 $2'   # $1 - out file, $2 - input file
+
+#    FFMPEG
+
+ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
+    # начало фрагмента, конец, исходный файл, выходной файл
+    # ff_cp 00:02:30 00:13:58 12.mp4 out.mp4
+    # ff_cp 10 50 12.mp4 out.mp4 - c 10 по 50 секунду
+	
+# конверт для телека h265 - h264, in и out расширение mp4
+ff_tv() { ffmpeg -i $1 -c:v libx264 -c:a copy $2; }
+	
+# компрессия
+ff_css_va() { ffmpeg -i $1 -c:v libx265 -c:a aac $2; }
+ff_css_v() { ffmpeg -i $1 -c:v libx265 -c:a copy $2; }
+
+# crop
+# ffmpeg -i in.mp4 -filter:v "crop=500:720:500:0" out.mp4
+# ширина:высота:координаты верхнего левого угла
+# если координаты не указывать, то обрезка центрируется
+
+
+#    YT-DLP
+
+# By default yt-dlp tries to download the best available quality
+# Каталог сохранения указан в конфиге
+# Ссылки подставляемые вместо параметра могут содержать символы которые нужно экранировать поэтому ссылки нужно ставить в кавычки, однако параметр кавычить бесполезно, так как он проверяется интерпретатором до подстановки
+
+# плейлисты
+alias yplck='yt-dlp --cookies yck -S "res:720" -o "/mnt/d/tmp/-ybd/WatchLater/%(playlist_index)s - %(title)s" $1'
+alias ypl4='yt-dlp -S "res:480" -o "/mnt/d/tmp/-ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)'
+alias ypl7='yt-dlp -S "res:720" -o "/mnt/d/tmp/-ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
+alias ypl10='yt-dlp -S "res:1080" -o "/mnt/d/tmp/-ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
+    # скачивание плейлиста с автонумерацией согласно плейлисту, с ведущими нулями; 
+	  # лучшее доступное видео с самым большим разрешением, но не лучше 720p
+    # параметр -o перебивает параметр в конфиге, поэтому нужно указать путь
+    # yck - cookie-файл для скачивания плейлиста "См позже"
+
+alias y7='yt-dlp -S "res:720" $(wl-paste)'
+alias y4='yt-dlp -S "res:480" $(wl-paste)'
+alias y10='yt-dlp -S "res:1080" $(wl-paste)'
+alias y7p='yt-dlp -S "res:720" $1'
+alias ydlp='~/.scripts/ydlp.sh'
+
+alias ybt='yt-dlp $(wl-paste)' 
+alias yl='yt-dlp -F $(wl-paste)' # список форматов
+alias yf='yt-dlp $(wl-paste) -f $1' # качать формат на выбор ($1 - номер формата)
+alias ya='yt-dlp -x'
+alias ymp3='yt-dlp -x --audio-format mp3'
