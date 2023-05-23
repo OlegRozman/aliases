@@ -79,6 +79,7 @@ alias pipup='pip install --user -U $1'
 #    НАВИГАЦИЯ
 
 alias cdy='cd /media/sf__shr/ytb' # для шары виртуальной машины
+alias cda='cd ~/.aliases'
 
 #    NET
 
