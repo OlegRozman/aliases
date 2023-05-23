@@ -25,6 +25,9 @@ alias csg='cat /etc/group | grep cs'  # в каких группах состо�
 # корзина
 alias rmm='trash-put $1'
 
+# rename
+alias name='rename -a ' ' '_' $1'
+
 # config
 alias al='alias | bat'
 alias all='bat ~/.aliases/main'
