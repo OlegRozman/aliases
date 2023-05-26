@@ -2,6 +2,8 @@
 
 # Functions to extract and comperess archives
 
+alias zp='zip -r $1.zip $1 ; trash-put $1'
+
 extract () {
     if [ -f $1 ]; then
         case $1 in
