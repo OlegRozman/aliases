@@ -3,6 +3,7 @@
 #azp () { zip -r "$1".zip "$1" &; process_id=$!; echo process_id; wait $process_id; echo "Exit status: $?"; trash-put $1; } 
 # ошибка из-за амперсанда похоже
 
+# в конце имени архивируемого каталого удалять '/' иначе имя не будет подставляться в имя архива и сам архив без имени будет кидаться в архивируемый каталог
 azp () { zip -r $1.zip $1; while [ ! -e $1.zip ]; do sleep 1; done; trash-put $1; }
 
 # Functions to extract and comperess archives
