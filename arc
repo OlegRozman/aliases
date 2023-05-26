@@ -1,8 +1,12 @@
 #!/bin/sh
 
+#azp () { zip -r "$1".zip "$1" &; process_id=$!; echo process_id; wait $process_id; echo "Exit status: $?"; trash-put $1; } 
+# ошибка из-за амперсанда похоже
+
+azp () { zip -r $1.zip $1; while [ ! -e $1.zip ]; do sleep 1; done; trash-put $1; }
+
 # Functions to extract and comperess archives
 
-alias zp='zip -r $1.zip $1 ; trash-put $1'
 
 extract () {
     if [ -f $1 ]; then
