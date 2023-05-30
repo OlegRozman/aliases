@@ -10,8 +10,8 @@
 
 #    GIT
 
-alias pull='cd ~/.aliases ; git pull --rebase'
-alias push='cd ~/.aliases; git add .; git commit -m "comment"; git push'
+alias pull='cd ~/.aliases; git pull --rebase; cd'
+alias push='cd ~/.aliases; git add .; git commit -m "comment"; git push; cd'
 
 #    СИСТЕМА
 
