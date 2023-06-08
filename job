@@ -6,7 +6,7 @@ alias torr='trash-put ~/Загрузки/*.torrent'
 
 # restic
 alias rbs='restic -r /run/media/cs/Sams25/backup-repo --verbose backup --files-from /run/media/cs/Sams25/list_bkp.txt --exclude-caches --exclude-file /run/media/cs/Sams25/excludes.txt'
-alias rs-vm='rsync -avzh /mnt/vm/Win10_luks /run/media/cs/Sams25/vm'
+alias rs-vm='rsync -avzh --delete-after /mnt/vm/Win10_luks /run/media/cs/Sams25/vm'
 alias rbj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo --verbose backup --password-file /mnt/data/sys/bkp/Joplin/passwd.txt /home/cs/.config/joplin-desktop/'
 alias rbj-forget='restic -r /mnt/data/sys/bkp/Joplin/backup-repo forget --keep-last 20 --prune'
 
