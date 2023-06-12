@@ -37,7 +37,14 @@ alias ypl10='yt-dlp -S "res:1080" -o "/mnt/d/tmp/-ybd/pl/%(playlist_index)s - %(
     # yck - cookie-файл для скачивания плейлиста "См позже"
 
 alias y7='yt-dlp -S "res:720" $(wl-paste) ; nice nautilus /mnt/data/tmp/ybd/'
-y7f() { yt-dlp -S "res:720" $(wl-paste); for f in /mnt/data/tmp/ybd/*; do cp "$f" "$(echo "$f" | sed 's/[:："＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.web/')"; done; nice nautilus /mnt/data/tmp/ybd/ ; }
+
+y7f() { link=$(wl-paste);
+	name="$(yt-dlp --print filename $link)";
+	echo $name;
+	yt-dlp -S "res:720" $link;
+	mv "$name" "$(echo "$name" | sed 's/[:："＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
+	nice nautilus /mnt/data/tmp/ybd/; }
+
 alias y4='yt-dlp -S "res:480" $(wl-paste) ; nice nautilus /mnt/data/tmp/ybd/'
 alias y10='yt-dlp -S "res:1080" $(wl-paste) ; nice nautilus /mnt/data/tmp/ybd/'
 alias y7p='yt-dlp -S "res:720" $1'
