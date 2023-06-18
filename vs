@@ -44,6 +44,12 @@ y7f() { link=$(wl-paste);
 	yt-dlp -S "res:720" $link;
 	mv "$name" "$(echo "$name" | sed 's/[:："＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
 	nice nautilus /mnt/data/tmp/ybd/; }
+y7f() { link=$(wl-paste);
+	name="$(yt-dlp --print filename $link)";
+	echo $name;
+	yt-dlp -S "res:480" $link;
+	mv "$name" "$(echo "$name" | sed 's/[:："＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
+	nice nautilus /mnt/data/tmp/ybd/; }
 
 alias y4='yt-dlp -S "res:480" $(wl-paste) ; nice nautilus /mnt/data/tmp/ybd/'
 alias y10='yt-dlp -S "res:1080" $(wl-paste) ; nice nautilus /mnt/data/tmp/ybd/'
