@@ -44,7 +44,7 @@ y7f() { link=$(wl-paste);
 	yt-dlp -S "res:720" $link;
 	mv "$name" "$(echo "$name" | sed 's/[:："＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
 	nice nautilus /mnt/data/tmp/ybd/; }
-y7f() { link=$(wl-paste);
+y4f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:480" $link;
