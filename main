@@ -46,13 +46,9 @@ alias name='rename -a " " "_" *'
 # config
 alias al='alias | bat'
 alias all='bat ~/.aliases/main'
-alias alh='bat ~/.aliases/home'
-alias alj='bat ~/.aliases/job'
 alias ala='bat ~/.aliases/arc'
 alias alv='bat ~/.aliases/vs'
 alias alled='nvim ~/.aliases/main' 
-alias alhed='nvim ~/.aliases/home'
-alias aljed='nvim ~/.aliases/job'
 alias alaed='nvim ~/.aliases/arc' 
 alias alved='nvim ~/.aliases/vs' 
 alias alssh='bat ~/.ssh/config' # псевдонимы для ssh подключений
@@ -106,13 +102,6 @@ alias sited='wget --mirror -p --convert-links -P'
 
 alias flush='sudo systemd-resolve --flush-caches'
 
-
-#    АРХИВАЦИЯ И ШИФРОВАНИЕ
-alias pk='tar -czvf $1.tar.gz $1'
-alias upk='tar -xzvf $1'
-
-alias gpk='tar -czvf - $1 | gpg -c > $1.tar.gz.gpg'
-alias ugpk='gpg -d $1 | tar -xzvf -'
 
 #    КОНВЕРТАЦИИ
 
