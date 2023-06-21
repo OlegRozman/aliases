@@ -18,6 +18,15 @@ alias push='cd ~/.aliases; git add .; git commit -m "comment"; git push; cd'
 alias sp='systemctl suspend'
 alias rt='systemctl reboot'
 
+# dnf
+alias ups='sudo dnf update'                    
+alias ill='sudo dnf install'
+alias rmv='sudo dnf remove $1 && sudo dnf autoremove'
+alias lil='dnf list installed | grep'
+
+# app others
+alias joplin_up='wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash'
+
 # systemd
 alias srvst='sudo systemctl start backup_joplin.service'
 alias drd='sudo systemctl daemon-reload'
@@ -71,12 +80,6 @@ alias lah='ls -lah'
 
 alias h='tail ~/.bash_history'
 alias hg='history | grep $1'
-
-# Fedora
-alias ups='sudo dnf update'                    
-alias ill='sudo dnf install'
-alias rmv='sudo dnf remove $1 && sudo dnf autoremove'
-alias lil='dnf list installed | grep'
 
 #    PYTHON
 
