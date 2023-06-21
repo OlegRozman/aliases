@@ -17,6 +17,7 @@ alias push='cd ~/.aliases; git add .; git commit -m "comment"; git push; cd'
 
 alias sp='systemctl suspend'
 alias rt='systemctl reboot'
+alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
 
 # dnf
 alias ups='sudo dnf update'                    
@@ -37,6 +38,7 @@ alias csg='cat /etc/group | grep cs'  # в каких группах состо�
 
 # корзина
 alias rmm='trash-put $1'
+alias trdl='trash-put ~/download/*.torrent'
 
 # rename
 alias name='rename -a " " "_" *'
@@ -118,4 +120,29 @@ alias ugpk='gpg -d $1 | tar -xzvf -'
 # узнать кондировку - file file.txt или file -i file.txt ; второе почему-то не распознало ASCII
 alias wintoutf='iconv -f WINDOWS-1251 -t UTF-8 -o $1 $2'   # $1 - out file, $2 - input file
 
+#    BACKUP
+
+# restic
+bkp_torrent=/mnt/ext-2Tb/bkp_torrent
+bkp_data=/mnt/ext-2Tb/bkp_data
+alias rbt='restic -r $bkp_torrent/backup-repo --verbose backup /mnt/torrent --exclude-file $exclude_torrent'
+alias rbd='restic -r $bkp_data/backup-repo --verbose backup --files-from $bkp_data/list_bkp.txt --exclude-caches --exclude-file $bkp_data/excludes.txt'
+
+# snapshots, unlock, check, prune, mount ~/restic, forget qw90j8ce, forget --keep-last 5 --prune
+alias rt='restic -r $bkp_torrent/backup-repo'
+alias rd='restic -r $bkp_data/backup-repo'
+alias rj='restic -r /mnt/data/bkp/joplin/backup-repo'
+alias rs='restic -r /mnt/sams25/backup-repo'
+
+# restic
+bkp_job=/run/media/cs/Sams25
+alias rbs='restic -r $bkp_job/backup-repo --verbose backup --files-from $bkp_job/list_bkp.txt --exclude-caches --exclude-file $bkp_job/excludes.txt'
+alias rs-vm='rsync -avzh --delete-after /mnt/vm/Win10_luks $bkp_job/vm'
+alias rbj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo --verbose backup --password-file /mnt/data/sys/bkp/Joplin/passwd.txt /home/cs/.config/joplin-desktop/'
+alias rbj-forget='restic -r /mnt/data/sys/bkp/Joplin/backup-repo forget --keep-last 20 --prune'
+
+# snapshots, unlock, check, prune, mount ~/restic, forget qw90j8ce, forget --keep-last 5 --prune
+alias rts='restic -r $bkp_job/backup-repo'
+alias rtj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo'
+alias rtf='restic -r ./backup-repo forget --keep-last $1 --prune'
 
