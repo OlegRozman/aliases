@@ -27,10 +27,10 @@ ff_css_v() { ffmpeg -i $1 -c:v libx265 -c:a copy $2; }
 # Ссылки подставляемые вместо параметра могут содержать символы которые нужно экранировать поэтому ссылки нужно ставить в кавычки, однако параметр кавычить бесполезно, так как он проверяется интерпретатором до подстановки
 
 # плейлисты
-alias yplck='yt-dlp --cookies yck -S "res:720" -o "/mnt/d/tmp/-ybd/WatchLater/%(playlist_index)s - %(title)s" $1'
-alias ypl4='yt-dlp -S "res:480" -o "/mnt/d/tmp/-ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)'
-alias ypl7='yt-dlp -S "res:720" -o "/mnt/d/tmp/-ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
-alias ypl10='yt-dlp -S "res:1080" -o "/mnt/d/tmp/-ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
+alias yplck='yt-dlp --cookies yck -S "res:720" -o "/mnt/data/tmp/ybd/WatchLater/%(playlist_index)s - %(title)s" $1'
+alias ypl4='yt-dlp -S "res:480" -o "/mnt/data/tmp/ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)'
+alias ypl7='yt-dlp -S "res:720" -o "/mnt/data/tmp/ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
+alias ypl10='yt-dlp -S "res:1080" -o "/mnt/data/tmp/ybd/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
     # скачивание плейлиста с автонумерацией согласно плейлисту, с ведущими нулями; 
 	  # лучшее доступное видео с самым большим разрешением, но не лучше 720p
     # параметр -o перебивает параметр в конфиге, поэтому нужно указать путь
@@ -42,14 +42,14 @@ y7f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:720" $link;
-	mv "$name" "$(echo "$name" | sed 's/[:："＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
-	nice nautilus /mnt/data/tmp/ybd/; }
+	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
+	nice nautilus /mnt/data/tmp/yt-dlp/; }
 y4f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:480" $link;
-	mv "$name" "$(echo "$name" | sed 's/[:："＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
-	nice nautilus /mnt/data/tmp/ybd/; }
+	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')";
+	nice nautilus /mnt/data/tmp/yt-dlp/; }
 
 alias y4='yt-dlp -S "res:480" $(wl-paste) ; nice nautilus /mnt/data/tmp/ybd/'
 alias y10='yt-dlp -S "res:1080" $(wl-paste) ; nice nautilus /mnt/data/tmp/ybd/'
