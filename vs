@@ -11,6 +11,11 @@ picresize() { mkdir resize;
 	       do convert "$i" -scale $1% -quality 80 ./resize/"$i";
 	       done }
 
+picrotate() { mkdir rotate;
+	      for i in *.*;
+              do convert "$i" -rotate $1 ./rotate/"$i";
+	      done }
+
 #    FFMPEG
 
 ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
