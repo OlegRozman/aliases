@@ -6,9 +6,10 @@
 alias pic_resize='convert $1 -scale $2% -quality 80 $3'
 # исходный файл; проценты масштабирования; выходной файл
 
-pic_resize_f(n) { for i in *; 
-		  do convert "$i" -scale $n% -quality 80 "$i";
-		  done }
+pic_resize_f() { mkdir resize
+	         for i in *.jpg; 
+		 do convert "$i" -scale 40% -quality 80 ./resize/"$i";
+		 done }
 
 #    FFMPEG
 
