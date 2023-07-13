@@ -3,13 +3,13 @@
 
 #   IMAGEMAGIC
 
-alias pic_resize='convert $1 -scale $2% -quality 80 $3'
+alias picresizeone='convert $1 -scale $2% -quality 80 $3'
 # исходный файл; проценты масштабирования; выходной файл
 
-pic_resize_f() { mkdir resize
-	         for i in *.*; 
-		 do convert "$i" -scale 40% -quality 80 ./resize/"$i";
-		 done }
+picresize() { mkdir resize;
+	       for i in *.*; 
+	       do convert "$i" -scale $1% -quality 80 ./resize/"$i";
+	       done }
 
 #    FFMPEG
 
