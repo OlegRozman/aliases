@@ -11,7 +11,9 @@ picresize() { mkdir resize;
 	       do convert "$i" -scale $1% -quality 80 ./resize/"$i";
 	       done }
 
-picrotate() { mkdir rotate;
+alias picrotate='mogrify -rotate $1 *.*'
+
+picrotatef() { mkdir rotate;
 	      for i in *.*;
               do convert "$i" -rotate $1 ./rotate/"$i";
 	      done }
