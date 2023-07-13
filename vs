@@ -1,5 +1,15 @@
 #!/bin/sh
 
+
+#   IMAGEMAGIC
+
+alias pic_resize='convert $1 -scale $2% -quality 80 $3'
+# исходный файл; проценты масштабирования; выходной файл
+
+pic_resize_f(n) { for i in *; 
+		  do convert "$i" -scale $n% -quality 80 "$i";
+		  done }
+
 #    FFMPEG
 
 ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
@@ -61,3 +71,5 @@ alias yl='yt-dlp -F $(wl-paste)' # список форматов
 alias yf='yt-dlp $(wl-paste) -f $1' # качать формат на выбор ($1 - номер формата)
 alias ya='yt-dlp -x'
 alias ymp3='yt-dlp -x --audio-format mp3'
+
+
