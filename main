@@ -10,18 +10,22 @@
 
 
 #    КРИПТО ПРО
-alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro'
+alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro; ls -lah'
 alias cdhdimg='cd /var/opt/cprocsp/keys/cs'
 
 cpkey () {
 	folderkey=$1;  # короткое имя ; исходный каталог - каталог нахождения копируемого
-	cp -r $folderkey /var/opt/cprocsp/keys/cs;
-	cd /var/opt/cprocsp/keys/cs;
-	chown -R cs:cs $folderkey;
-	chmod 700 $folderkey;
-	chmod 600 $folderkey/*;
-	ls -lah;
-        ls -lah $folderkey; }
+	if [[ -z $folderkey ]]; then
+		echo folderkey не задан
+	else
+		cp -r $folderkey /var/opt/cprocsp/keys/cs;
+		cd /var/opt/cprocsp/keys/cs;
+		chown -R cs:cs $folderkey;
+		chmod 700 $folderkey;
+		chmod 600 $folderkey/*;
+		ls -lah;
+	        ls -lah $folderkey; 
+	fi }
 
 #    GIT
 
