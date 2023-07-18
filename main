@@ -15,7 +15,7 @@ alias cdkey='cd /var/opt/cprocsp/keys/cs'
 
 cpkey () {
 	folderkey=$1;  # короткое имя ; исходный каталог - каталог нахождения копируемого
-	sudo cp -r $folderkey /var/opt/cprocsp/keys/cs;
+	cp -r $folderkey /var/opt/cprocsp/keys/cs;
 	cd /var/opt/cprocsp/keys/cs;
 	chown -R cs:cs $folderkey;
 	chmod 700 $folderkey;
