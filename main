@@ -14,13 +14,13 @@
 alias cdkey='cd /var/opt/cprocsp/keys/cs'
 
 cpkey () {
-	folderkey = $1  # короткое имя ; исходный каталог - каталог нахождения копируемого
-	sudo cp $folderkey /var/opt/cprocsp/keys/cs
-	cd /var/opt/cprocsp/keys/cs
-	chown -R cs:cs $folderkey
-	chmod 700 $folderkey
-	chmod 600 $folderkey/*
-	lah  }
+	folderkey = $1;  # короткое имя ; исходный каталог - каталог нахождения копируемого
+	sudo cp $folderkey /var/opt/cprocsp/keys/cs;
+	cd /var/opt/cprocsp/keys/cs;
+	chown -R cs:cs $folderkey;
+	chmod 700 $folderkey;
+	chmod 600 $folderkey/*;
+	lah;  }
 
 #    GIT
 
