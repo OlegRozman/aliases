@@ -10,8 +10,8 @@
 
 
 #    КРИПТО ПРО
-
-alias cdkey='cd /var/opt/cprocsp/keys/cs'
+alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro'
+alias cdhdimg='cd /var/opt/cprocsp/keys/cs'
 
 cpkey () {
 	folderkey=$1;  # короткое имя ; исходный каталог - каталог нахождения копируемого
