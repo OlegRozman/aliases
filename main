@@ -24,7 +24,7 @@ cpkey () {
 		chmod 700 $folderkey;
 		chmod 600 $folderkey/*;
 		ls -lah;
-	        ls -lah $folderkey; 
+		ls -lah $folderkey; 
 	fi }
 
 #    GIT
