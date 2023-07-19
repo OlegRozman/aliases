@@ -15,7 +15,7 @@ alias cdhdimg='cd /var/opt/cprocsp/keys/cs'
 
 cpkey () {
 	folderkey=$1;  # короткое имя ; исходный каталог - каталог нахождения копируемого
-	if [[ -z $folderkey ]]; then
+	if [[ -z $folderkey && -a $folderkey]]; then
 		echo folderkey не задан
 	else
 		cp -r $folderkey /var/opt/cprocsp/keys/cs;
