@@ -9,6 +9,11 @@
 # git commit -m "comment"
 # git push
 
+#    GIT
+
+alias pull='cd ~/.aliases; git pull --rebase; cd'
+alias push='cd ~/.aliases; git diff; git add .; git commit -m "comment"; git push; cd'
+
 
 #    КРИПТО ПРО
 alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro; ls'
@@ -29,10 +34,6 @@ cpkey () {
 		echo folderkey не задан или не существует;
 	fi }
 
-#    GIT
-
-alias pull='cd ~/.aliases; git pull --rebase; cd'
-alias push='git diff ; cd ~/.aliases; git add .; git commit -m "comment"; git push; cd'
 
 #    СИСТЕМА
 
