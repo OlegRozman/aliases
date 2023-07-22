@@ -32,7 +32,7 @@ cpkey () {
 #    GIT
 
 alias pull='cd ~/.aliases; git pull --rebase; cd'
-alias push='git diff | cd ~/.aliases; git add .; git commit -m "comment"; git push; cd'
+alias push='git diff ; cd ~/.aliases; git add .; git commit -m "comment"; git push; cd'
 
 #    СИСТЕМА
 
