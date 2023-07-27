@@ -45,7 +45,8 @@ alias eps='epson-printer-utility'  # утилита, показывающая у
 alias ups='sudo dnf update'                    
 alias ill='sudo dnf install'
 alias rmv='sudo dnf remove $1 && sudo dnf autoremove'
-alias lil='dnf list installed | grep'
+alias ilist='dnf list installed | grep'
+alias rlist='sudo dnf repolist'
 
 # app others
 alias joplin_up='wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash'
