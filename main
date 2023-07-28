@@ -11,7 +11,7 @@
 
 #    GIT
 
-alias pull='cd ~/.aliases; git diff; read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1; git pull --rebase; cd'
+alias pull='cd ~/.aliases; git pull --rebase; cd'
 alias push='cd ~/.aliases; git diff; read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1; git add .; git commit -m "comment"; git push; cd'
 
 
