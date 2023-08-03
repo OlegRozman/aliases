@@ -76,7 +76,7 @@ alias alaed='nvim ~/.aliases/arc'
 alias alved='nvim ~/.aliases/vs' 
 alias alssh='bat ~/.ssh/config' # псевдонимы для ssh подключений
 alias alp='alias -p'
-alias src='source ~/.bashrc'
+alias src='source ~/.zshrc'
 
 # Size
 
@@ -89,7 +89,7 @@ alias duone='du -sch .[!.]* * |sort -h'  # размер каталогов пе�
 alias duhome='du -sh /home'  # размер домашнего каталога в Гб; если добавить -m или -k - в Мб или Кб
 alias dusort='du -d 1 -h | sort -h'  # сортировка по размеру каталогов
 # отфильтровать маленькие файлы, остальные сортировать по размеру; +G - в выводе тяжелее 1 Гб
-alias dusortf='du -h /home | grep '^\s*[0-9\.]\+M' | sort -rn' 
+alias dusortf='du -h /home | grep "^\s*[0-9\.]\+M" | sort -rn' 
 
 # man yandex-disk - на русском: stop, start, publish, unpublish
 alias yk='yandex-disk status'
