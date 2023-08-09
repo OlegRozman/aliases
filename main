@@ -12,7 +12,8 @@
 #    GIT
 
 alias pull='cd ~/.aliases; git pull --rebase; cd'
-alias push='cd ~/.aliases; git diff; read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1; git add .; git commit -m "comment"; git push; cd'
+alias push='cd ~/.aliases; git diff; read; git add .; git commit -m "comment"; git push; cd'
+# read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1;
 
 
 #    КРИПТО ПРО
@@ -99,8 +100,8 @@ alias ll='ls -l'
 alias la='ls -a'
 alias lah='ls -lah'
 
-alias h='tail ~/.bash_history'
-alias hg='history | grep $1'
+alias h='history' # в zsh команда history выводит по-умолчанию 20 последних (history 20)
+alias hg='history 0 | grep $1'
 
 #    PYTHON
 
