@@ -42,6 +42,12 @@ alias sp='systemctl suspend'
 alias rt='systemctl reboot'
 alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
 
+# path to clipboard
+alias ptoc='pwd | wl-copy'
+
+# Flatpak
+alias listfpak='ls -a /var/lib/flatpak/app'
+
 # dnf
 alias ups='sudo dnf update'                    
 alias ill='sudo dnf install'
