@@ -157,7 +157,7 @@ alias rs='restic -r /mnt/sams25/backup-repo'
 bkp_job=/run/media/cs/Sams25
 alias rb-yk='restic -r /mnt/data/y-dk/job/bkp --verbose backup --files-from /mnt/data/y-dk/job/bkp/list_bkp.txt --exclude-caches --exclude-file /mnt/data/y-dk/job/bkp/excludes.txt'
 alias rbs='restic -r $bkp_job/backup-repo --verbose backup --files-from $bkp_job/list_bkp.txt --exclude-caches --exclude-file $bkp_job/excludes.txt'
-alias rs-vm='rsync -avzh --delete-after /mnt/vm/gnome-boxes/gnome-boxes/images/ $bkp_job/vm'
+alias rs-vm='rsync -avzh --delete-after /mnt/vm/gnome-boxes $bkp_job/vm'
 alias rbj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo --verbose backup --password-file /mnt/data/sys/bkp/Joplin/passwd.txt /home/cs/.config/joplin-desktop/'
 alias rbj-forget='restic -r /mnt/data/sys/bkp/Joplin/backup-repo forget --keep-last 20 --prune'
 
