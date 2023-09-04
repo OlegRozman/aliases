@@ -139,6 +139,9 @@ alias flush='sudo systemd-resolve --flush-caches'
 # узнать кондировку - file file.txt или file -i file.txt ; второе почему-то не распознало ASCII
 alias wintoutf='iconv -f WINDOWS-1251 -t UTF-8 -o $1 $2'   # $1 - out file, $2 - input file
 
+# перекодировка имён файлов
+alias fnametoutf='for file in *; do mv "$file" "`echo $file | iconv -f WINDOWS-1251 -t UTF-8`"; done'
+
 #    BACKUP
 
 # restic
