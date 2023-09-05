@@ -73,6 +73,21 @@ alias tordel='trash-put ~/download/*.torrent'
 # rename
 alias name='rename -a " " "_" *'
 
+rname () {
+	for file in *
+	do
+		# Rename the file, leaving only letters and digits
+		name=$(basename "$file" | sed 's/.[^.]*$//')
+		extension=$(echo ${file##*.})
+		new_name=$(echo "$name"| sed -e 's/[^[:alpha:]^[:digit:]-]/_/g')
+		mv "$file" "$new_name.$extension"
+
+		# Display a message that the file has been renamed successfully
+		echo "File renamed to $new_name.$extension"
+	done
+}
+
+
 # config
 alias al='alias | bat'
 alias all='bat ~/.aliases/main'
