@@ -29,8 +29,13 @@ ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
 ff_tv() { ffmpeg -i $1 -c:v libx264 -c:a copy $2; }
 	
 # компрессия
-ff_css_va() { ffmpeg -i $1 -c:v libx265 -c:a aac $2; }
-ff_css_v() { ffmpeg -i $1 -c:v libx265 -c:a copy $2; }
+ff_css_va() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a aac $2; }
+ff_css_v() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a copy $2; }
+
+ff_css_720() { for file in ./*.mp4;
+                   do ffmpeg -i "$file" -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy "${file/.mp4/_conv.mp4}"
+		   done }
+
 
 # crop
 # ffmpeg -i in.mp4 -filter:v "crop=500:720:500:0" out.mp4
