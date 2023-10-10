@@ -15,6 +15,9 @@ alias pull='cd ~/.aliases; git pull --rebase; cd'
 alias push='cd ~/.aliases; git diff; read; git add .; git commit -m "comment"; git push; cd'
 # read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1;
 
+#    SSH
+alias minet='sshfs inet: ~/remote/inet'
+alias mdrweb='sshfs drweb: ~/remote/drweb'
 
 #    КРИПТО ПРО
 alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro; ls'
