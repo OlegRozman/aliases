@@ -56,7 +56,7 @@ alias ilist='dnf list installed | grep'
 alias rlist='sudo dnf repolist'
 
 # app others
-alias joplin_up='wget -O - https://raw.githubusercontent.com/laurent22/joplin/dev/Joplin_install_and_update.sh | bash'
+alias vi='nvim'
 
 # systemd
 alias srvst='sudo systemctl start backup_joplin.service'
