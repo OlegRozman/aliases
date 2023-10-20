@@ -13,6 +13,7 @@
 
 alias pull='cd ~/.aliases; git pull --rebase; cd'
 alias push='cd ~/.aliases; git diff; read; git add .; git commit -m "comment"; git push; cd'
+# нажать q, потом enter
 # read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1;
 
 #    SSH
