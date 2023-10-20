@@ -190,6 +190,7 @@ alias rbj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo --verbose backup --pas
 alias rbj-forget='restic -r /mnt/data/sys/bkp/Joplin/backup-repo forget --keep-last 20 --prune'
 
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget qw90j8ce, forget --keep-last 5 --prune
+alias rty='restic -r /mnt/data/y-dk/job/bkp/'
 alias rts='restic -r $bkp_job/backup-repo'
 alias rtj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo'
 alias rtf='restic -r ./backup-repo forget --keep-last $1 --prune'
