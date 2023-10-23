@@ -1,11 +1,11 @@
 #!/bin/sh
 
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
-alias pk='tar -czvf $1.tar.gz $1'
-alias upk='tar -xzvf $1'
+tgz() { tar -czvf $1.tar.gz $1 }
+etgz() { tar -xzvf $1 }
 
-gpk() { tar -czvf - $1 | gpg -c > $1.tar.gz.gpg }
-ugpk() { gpg -d $1 | tar -xzvf - }
+gtgz() { tar -czvf - $1 | gpg -c > $1.tar.gz.gpg }
+getgz() { gpg -d $1 | tar -xzvf - }
 
 #azp () { zip -r "$1".zip "$1" &; process_id=$!; echo process_id; wait $process_id; echo "Exit status: $?"; trash-put $1; }
 # ошибка из-за амперсанда похоже
