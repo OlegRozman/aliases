@@ -18,6 +18,9 @@ picrotatef() { mkdir rotate;
               do convert "$i" -rotate $1 ./rotate/"$i";
 	      done }
 
+# PDF
+alias pdftojpg='pdftocairo -jpeg $1'   # $1 - имя pdf файла
+
 #    FFMPEG
 
 ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
