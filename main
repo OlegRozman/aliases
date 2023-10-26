@@ -21,7 +21,7 @@ alias minet='sshfs inet: ~/remote/inet'
 alias mdrweb='sshfs drweb: ~/remote/drweb'
 
 #    GOPASS
-alias gpass='gopass $1 && gopass -c $1'
+gpass () { 'gopass $1 && gopass -c $1' }
 
 #    КРИПТО ПРО
 alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro; ls'
