@@ -142,6 +142,9 @@ alias pipup='pip install --user -U $1'
 alias cdy='cd /media/sf__shr/ytb' # для шары виртуальной машины
 alias cda='cd ~/.aliases'
 
+# job
+alias cdoleg='cd /run/user/1000/gvfs/smb-share:server=172.18.18.3,share=share/Distribu/_Upload_/Oleg'
+
 #    NET
 
 alias whis='curl cli.fyi/$1' # whis -> whois - сервис - см. закладка на github
