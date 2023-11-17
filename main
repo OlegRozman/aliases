@@ -174,6 +174,7 @@ bkp_torrent=/mnt/ext-2Tb/bkp_torrent
 bkp_data=/mnt/ext-2Tb/bkp_data
 alias rbt='restic -r $bkp_torrent/backup-repo --verbose backup /mnt/torrent --exclude-file $exclude_torrent'
 alias rbd='restic -r $bkp_data/backup-repo --verbose backup --files-from $bkp_data/list_bkp.txt --exclude-caches --exclude-file $bkp_data/excludes.txt'
+alias rsync-vmh='rsync -avzh --delete-after /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext-2Tb/vm'
 
 # snapshots, unlock, check, prune, mount ~/restic, forget qw90j8ce, forget --keep-last 5 --prune
 alias rt='restic -r $bkp_torrent/backup-repo'
@@ -192,7 +193,7 @@ rb-yk() {
 # alias rb-yk='restic -r /mnt/data/y-dk/job/bkp --verbose backup --files-from /mnt/data/y-dk/job/bkp/list_bkp.txt --exclude-caches --exclude-file /mnt/data/y-dk/job/bkp/excludes.txt'
 
 alias rbs='restic -r $bkp_job/backup-repo --verbose backup --files-from $bkp_job/list_bkp.txt --exclude-caches --exclude-file $bkp_job/excludes.txt'
-alias rs-vm='rsync -avzh --delete-after /mnt/vm/gnome-boxes $bkp_job/vm'
+alias rsync-vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes $bkp_job/vm'
 alias rbj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo --verbose backup --password-file /mnt/data/sys/bkp/Joplin/passwd.txt /home/cs/.config/joplin-desktop/'
 alias rbj-forget='restic -r /mnt/data/sys/bkp/Joplin/backup-repo forget --keep-last 20 --prune'
 
