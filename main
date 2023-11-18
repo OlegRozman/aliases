@@ -170,8 +170,8 @@ alias fnametoutf='for file in *; do mv "$file" "`echo $file | iconv -f WINDOWS-1
 #    BACKUP
 
 # restic
-bkp_torrent=/mnt/ext-2Tb/bkp_torrent
-bkp_data=/mnt/ext-2Tb/bkp_data
+bkp_torrent=/mnt/ext2Tb/bkp_torrent
+bkp_data=/mnt/ext2Tb/bkp_data
 alias rbt='restic -r $bkp_torrent/backup-repo --verbose backup /mnt/torrent --exclude-file $exclude_torrent'
 alias rbd='restic -r $bkp_data/backup-repo --verbose backup --files-from $bkp_data/list_bkp.txt --exclude-caches --exclude-file $bkp_data/excludes.txt'
 alias rsync-vmh='rsync -avzh --delete-after /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext-2Tb/vm'
