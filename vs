@@ -1,7 +1,8 @@
 #!/bin/sh
 
 
-#   IMAGEMAGIC
+# ........................  IMAGEMAGIC  ........................
+
 
 alias picresizeone='convert $1 -scale $2% -quality 80 $3'
 # исходный файл; проценты масштабирования; выходной файл
@@ -18,10 +19,17 @@ picrotatef() { mkdir rotate;
               do convert "$i" -rotate $1 ./rotate/"$i";
 	      done }
 
-# PDF
+
+
+# ...........................  PDF  .............................
+
+
 alias pdftojpg='pdftocairo -jpeg $1'   # $1 - имя pdf файла
 
-#    FFMPEG
+
+
+
+# ..........................  FFMPEG  ...........................
 
 ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
     # начало фрагмента, конец, исходный файл, выходной файл
@@ -46,7 +54,9 @@ ff_css_720() { for file in ./*.mp4;
 # если координаты не указывать, то обрезка центрируется
 
 
-#    YT-DLP
+
+# ............................  YT-DLP ............................
+
 
 # By default yt-dlp tries to download the best available quality
 # Каталог сохранения указан в конфиге
