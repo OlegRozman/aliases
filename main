@@ -9,21 +9,31 @@
 # git commit -m "comment"
 # git push
 
-#    GIT
+
+
+# ................................   GIT    ................................ 
+
 
 alias pull='cd ~/.aliases; git pull --rebase; cd'
 alias push='cd ~/.aliases; git diff; read; git add .; git commit -m "comment"; git push; cd'
 # нажать q, потом enter
 # read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1;
 
-#    SSH
+
+
+
+#  ................................   SSH    ................................ 
+
+
 alias minet='sshfs inet: ~/remote/inet'
 alias mdrweb='sshfs drweb: ~/remote/drweb'
 
-#    GOPASS
-gpass () { gopass $1 && gopass -c $1 }
 
-#    КРИПТО ПРО
+
+
+# ................................   КРИПТО ПРО   ................................   
+
+
 alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro; ls'
 alias cdhdimg='cd /var/opt/cprocsp/keys/cs; ls'
 
@@ -43,41 +53,59 @@ cpkey () {
 	fi }
 
 
-#    СИСТЕМА
+
+# ................................   СИСТЕМА   ................................ 
+
 
 alias sp='systemctl suspend'
 alias rt='systemctl reboot'
 alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
 
-# path to clipboard
+
+# ................................ path to clipboard
+
 alias ptoc='pwd | wl-copy'
 
-# Flatpak
+
+# ................................ Flatpak
+
 alias listfpak='ls -a /var/lib/flatpak/app'
 
-# dnf
+
+# ................................ dnf
+
 alias ups='sudo dnf update'                    
 alias ill='sudo dnf install'
 alias rmv='sudo dnf remove $1 && sudo dnf autoremove'
 alias ilist='dnf list installed | grep'
 alias rlist='sudo dnf repolist'
 
-# app others
+
+# ................................ app others
+
 alias vi='nvim'
 
-# systemd
+
+# ................................ systemd
+
 alias srvst='sudo systemctl start backup_joplin.service'
 alias drd='sudo systemctl daemon-reload'
 alias srvss='systemctl status backup_joplin.service'
 
-# user group
+
+# ................................ user group
+
 alias csg='cat /etc/group | grep cs'  # в каких группах состоит пользователь cs
 
-# корзина
+
+# ................................ корзина
+
 alias rmm='trash-put $1'
 alias tordel='trash-put ~/download/*.torrent'
 
-# rename
+
+# ................................ rename
+
 alias name='rename -a " " "_" *'
 
 rname () {
@@ -95,7 +123,8 @@ rname () {
 }
 
 
-# config
+# ................................ config
+
 alias al='alias | bat'
 alias all='bat ~/.aliases/main'
 alias ala='bat ~/.aliases/arc'
@@ -107,7 +136,8 @@ alias alssh='bat ~/.ssh/config' # псевдонимы для ssh подключ
 alias alp='alias -p'
 alias src='source ~/.zshrc'
 
-# Size
+
+# ................................ Size
 
 # вычисляет и выводит размеры файлов и каталогов в рабочей директории
 alias dfsys='btrfs filesystem df /'   # для btrfs на системном
@@ -120,32 +150,50 @@ alias dusort='du -d 1 -h | sort -h'  # сортировка по размеру 
 # отфильтровать маленькие файлы, остальные сортировать по размеру; +G - в выводе тяжелее 1 Гб
 alias dusortf='du -h /home | grep "^\s*[0-9\.]\+M" | sort -rn' 
 
-# man yandex-disk - на русском: stop, start, publish, unpublish
+# ................................ man yandex-disk : stop, start, publish, unpublish
+
 alias yk='yandex-disk status'
+
+
+# ................................ ls
 
 alias l='ls -CF'
 alias ll='ls -l'
 alias la='ls -a'
 alias lah='ls -lah'
 
+
+# ................................ history
+
 alias h='history' # в zsh команда history выводит по-умолчанию 20 последних (history 20)
 alias hg='history 0 | grep $1'
 
-#    PYTHON
+
+
+# ................................   PYTHON   ................................ 
+
 
 alias py='python3'
 # pip --version; ups; pip list; обновить пакет $1
 alias pipup='pip install --user -U $1'
 
-#    НАВИГАЦИЯ
+
+
+# ................................   НАВИГАЦИЯ   ................................ 
+
 
 alias cdy='cd /media/sf__shr/ytb' # для шары виртуальной машины
 alias cda='cd ~/.aliases'
 
-# job
+
+# ................................ job
+
 alias cdoleg='cd /run/user/1000/gvfs/smb-share:server=172.18.18.3,share=share/Distribu/_Upload_/Oleg'
 
-#    NET
+
+
+# ................................   NET   ................................ 
+
 
 alias whis='curl cli.fyi/$1' # whis -> whois - сервис - см. закладка на github
 
@@ -158,7 +206,9 @@ alias sited='wget --mirror -p --convert-links -P'
 alias flush='sudo systemd-resolve --flush-caches'
 
 
-#    КОНВЕРТАЦИИ
+
+# ................................   КОНВЕРТАЦИИ   ................................ 
+
 
 # список исходных кодировок iconv -l, в команде работает tab, чтобы не опечататься
 # узнать кондировку - file file.txt или file -i file.txt ; второе почему-то не распознало ASCII
@@ -167,13 +217,17 @@ alias wintoutf='iconv -f WINDOWS-1251 -t UTF-8 -o $1 $2'   # $1 - out file, $2 -
 # перекодировка имён файлов
 alias fnametoutf='for file in *; do mv "$file" "`echo $file | iconv -f WINDOWS-1251 -t UTF-8`"; done'
 
-#    BACKUP
 
-# restic
+
+# ................................   BACKUP   ................................ 
+
+
+# ................................ home
+
 bkp_torrent=/mnt/ext2Tb/bkp_torrent
 bkp_data=/mnt/ext2Tb/bkp_data
 alias rbd='restic -r $bkp_data/data_repo --verbose backup --files-from $bkp_data/list_bkp.txt --exclude-caches --exclude-file $bkp_data/excludes.txt'
-alias rsync-torrent='rsync -avzh --delete-after --exclude-from=/mnt/ext2Tb/bkp_torrent/excludes.txt /mnt/torrent /mnt/ext2Tb/bkp_torrent'
+alias rsync-torrent='rsync -avzh --delete-after --log-file=/mnt/ext2Tb/bkp_torrent/rsync_log.txt --exclude-from=/mnt/ext2Tb/bkp_torrent/excludes.txt /mnt/torrent /mnt/ext2Tb/bkp_torrent'
 alias rsync-vmh='rsync -avzh --delete-after /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext-2Tb/vm'
 # alias rbt='restic -r $bkp_torrent/backup-repo --verbose backup /mnt/torrent --exclude-file $exclude_torrent'
 
@@ -183,7 +237,8 @@ alias rd='restic -r $bkp_data/backup-repo'
 alias rj='restic -r /mnt/data/bkp/joplin/backup-repo'
 alias rs='restic -r /mnt/sams25/backup-repo'
 
-# restic
+# ................................ job
+
 bkp_job=/run/media/cs/Sams25
 rb-yk() {
    yandex-disk stop
