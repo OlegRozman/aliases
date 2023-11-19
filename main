@@ -224,38 +224,30 @@ alias fnametoutf='for file in *; do mv "$file" "`echo $file | iconv -f WINDOWS-1
 
 # ................................ home
 
-bkp_torrent=/mnt/ext2Tb/bkp_torrent
-bkp_data=/mnt/ext2Tb/bkp_data
-alias rbd='restic -r $bkp_data/data_repo --verbose backup --files-from $bkp_data/list_bkp.txt --exclude-caches --exclude-file $bkp_data/excludes.txt'
-alias rsync-torrent='rsync -avzh --delete-after --log-file=/mnt/ext2Tb/bkp_torrent/rsync_log.txt --exclude-from=/mnt/ext2Tb/bkp_torrent/excludes.txt /mnt/torrent /mnt/ext2Tb/bkp_torrent'
-alias rsync-vmh='rsync -avzh --delete-after /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext-2Tb/vm'
-# alias rbt='restic -r $bkp_torrent/backup-repo --verbose backup /mnt/torrent --exclude-file $exclude_torrent'
+bp_torrent=/mnt/ext2Tb/bp_torrent
+bp_data=/mnt/ext2Tb/bp_data
+alias rbd='restic -r $bp_data/data_repo --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
+alias rsync-torrent='rsync -avzh --delete-after --log-file=/mnt/ext2Tb/bp_torrent/rsync_log.txt --exclude-from=/mnt/ext2Tb/bp_torrent/excludes.txt /mnt/torrent /mnt/ext2Tb/bp_torrent'
+alias rsync-vmh='rsync -avzh --delete-after --log-file=/mnt/ext2Tb/bp_torrent/rsync_log.txt /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext-2Tb/bp_vm'
+# alias rbt='restic -r $bp_torrent/backup-repo --verbose backup /mnt/torrent --exclude-file $exclude_torrent'
 
 # snapshots, unlock, check, prune, mount ~/restic, forget qw90j8ce, forget --keep-last 5 --prune
-alias rt='restic -r $bkp_torrent/backup-repo'
-alias rd='restic -r $bkp_data/backup-repo'
-alias rj='restic -r /mnt/data/bkp/joplin/backup-repo'
-alias rs='restic -r /mnt/sams25/backup-repo'
+alias rt='restic -r $bp_torrent/backup-repo'
+alias rd='restic -r $bp_data/backup-repo'
 
 # ................................ job
 
-bkp_job=/run/media/cs/Sams25
 rb-yk() {
    yandex-disk stop
-   restic -r /mnt/data/y-dk/job/bkp --verbose backup --files-from /mnt/data/y-dk/job/bkp/list_bkp.txt --exclude-caches --exclude-file /mnt/data/y-dk/job/bkp/excludes.txt
+   restic -r /mnt/data/y-dk/job/bp --verbose backup --files-from /mnt/data/y-dk/job/bp/list_bp.txt --exclude-caches --exclude-file /mnt/data/y-dk/job/bp/excludes.txt
    yandex-disk start
 }
 
-# alias rb-yk='restic -r /mnt/data/y-dk/job/bkp --verbose backup --files-from /mnt/data/y-dk/job/bkp/list_bkp.txt --exclude-caches --exclude-file /mnt/data/y-dk/job/bkp/excludes.txt'
+alias rb-yk_forget='restic -r /mnt/data/y-dk/bp forget --keep-last 20 --prune'
 
-alias rbs='restic -r $bkp_job/backup-repo --verbose backup --files-from $bkp_job/list_bkp.txt --exclude-caches --exclude-file $bkp_job/excludes.txt'
-alias rsync-vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes $bkp_job/vm'
-alias rbj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo --verbose backup --password-file /mnt/data/sys/bkp/Joplin/passwd.txt /home/cs/.config/joplin-desktop/'
-alias rbj-forget='restic -r /mnt/data/sys/bkp/Joplin/backup-repo forget --keep-last 20 --prune'
+alias rsync-vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes $bp_job/vm'
 
-# snapshots, unlock, check, prune, mount ~/sys/restic, forget qw90j8ce, forget --keep-last 5 --prune
-alias rty='restic -r /mnt/data/y-dk/job/bkp/'
-alias rts='restic -r $bkp_job/backup-repo'
-alias rtj='restic -r /mnt/data/sys/bkp/Joplin/backup-repo'
+# snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
+alias rty='restic -r /mnt/data/y-dk/job/bp/'
 alias rtf='restic -r ./backup-repo forget --keep-last $1 --prune'
 
