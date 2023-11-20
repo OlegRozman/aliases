@@ -233,8 +233,8 @@ alias rsync_torrent='rsync -avzh --delete-after --log-file=$bp_torrent/rsync.log
 alias rsync_vmh='rsync -avzh --delete-after --log-file=/mnt/ext2Tb/bp_vm/rsync.log /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext2Tb/bp_vm'
 
 # snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_data-='restic -r $bp_data/backup-repo'
-alias restic_data-forget='restic -r /$bp_data/backup-repo forget --keep-last 20 --prune'
+alias restic_data-='restic -r $bp_data/data_repo'
+alias restic_data-forget='restic -r /$bp_data/data_repo forget --keep-last 20 --prune'
 
 
 # ................................ job
