@@ -144,7 +144,8 @@ alias dfsys='btrfs filesystem df /'   # для btrfs на системном
 alias ussys='sudo btrfs filesystem usage /'  # подробнее, но от рута запускать надо
 
 # Пользоваться ncdu
-alias duone='du -sch .[!.]* * |sort -h'  # размер каталогов первого уровня
+alias duone='du -sch * | sort -h'  # размер каталогов первого уровня
+# wildcard то работает то нет : alias duone='du -sch .[!.]* * |sort -h'
 alias duhome='du -sh /home'  # размер домашнего каталога в Гб; если добавить -m или -k - в Мб или Кб
 alias dusort='du -d 1 -h | sort -h'  # сортировка по размеру каталогов
 # отфильтровать маленькие файлы, остальные сортировать по размеру; +G - в выводе тяжелее 1 Гб
