@@ -230,8 +230,8 @@ bp_torrent=/mnt/ext2Tb/bp_torrent
 bp_data=/mnt/ext2Tb/bp_data
 
 alias restic_data='restic -r $bp_data/data_repo --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
-alias rsync_torrent='rsync -avzh --delete-after --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
-alias rsync_vmh='rsync -avzh --delete-after --log-file=/mnt/ext2Tb/bp_vm/rsync.log /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext2Tb/bp_vm'
+alias rsync_torrent='rsync -avh --delete-after --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
+alias rsync_vmh='rsync -avh --delete-after --log-file=/mnt/ext2Tb/bp_vm/rsync.log /mnt/ssd_500/gnome-boxes /mnt/ssd_500/vmware /mnt/ext2Tb/bp_vm'
 
 # snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
 alias restic_data-='restic -r $bp_data/data_repo'
