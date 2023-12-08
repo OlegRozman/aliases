@@ -199,7 +199,7 @@ alias cdoleg='cd /run/user/1000/gvfs/smb-share:server=172.18.18.3,share=share/Di
 
 alias whis='curl cli.fyi/$1' # whis -> whois - сервис - см. закладка на github
 
-alias sited='wget --mirror -p --convert-links -P'
+alias sited='wget --mirror -p --convert-links -P . $1'
     # wget --mirror -p --convert-links -P /home/dan xyz.com
     # -p загрузка всех файлов, необходимых для отображения страниц
     # --convert-links: ссылки будут преобразованы для локального просмотра сайта
