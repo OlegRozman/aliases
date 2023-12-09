@@ -106,7 +106,7 @@ alias tordel='trash-put ~/download/*.torrent'
 
 # ................................ rename
 
-alias name='rename -a " " "_" *'
+alias name='rename -a " " "_" * && rename -a "__" "_" *'
 
 rname () {
 	for file in *
