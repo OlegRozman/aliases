@@ -51,7 +51,9 @@ ff_tv() { ffmpeg -i $1 -c:v libx264 -c:a copy $2; }
 ff_css_va() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a aac $2; }
 ff_css_v() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a copy $2; }
 
-ff_css_720() { for file in ./*.mp4;
+ff_css_720() { ffmpeg -i $1 -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy $2; }
+
+ff_css_720_all() { for file in ./*.mp4;
                    do ffmpeg -i "$file" -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy "${file/.mp4/_conv.mp4}"
 		   done }
 
