@@ -248,6 +248,7 @@ restic-job() {
    yandex-disk start
 }
 
+# добавить /home/cs/.config/libvirt - сохранённые состояния машин
 #   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
 
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
