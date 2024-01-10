@@ -108,6 +108,7 @@ alias tordel='trash-put ~/download/*.torrent'
 
 alias name='rename -av " " "_" * ; rename -av "__" "_" *'
 
+# к имени каталога добавляет точку - ПРАВИТЬ !!!
 rname () {
 	for file in *
 	do
