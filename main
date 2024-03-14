@@ -69,7 +69,7 @@ alias ptoc='pwd | wl-copy'
 
 # ................................ Flatpak
 
-alias listfpak='ls -a /var/lib/flatpak/app'
+alias listfpak='flatpak list --app'
 
 
 # ................................ dnf
