@@ -17,6 +17,8 @@ azp() {
 	trash-put $1
 }
 
+zip_enc() { zip -r --encrypt $1.zip $1 }
+
 # Functions to extract and comperess archives
 
 extract() {
