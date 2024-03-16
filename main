@@ -220,7 +220,7 @@ alias wintoutf='iconv -f WINDOWS-1251 -t UTF-8 -o $1 $2'   # $1 - out file, $2 -
 # перекодировка имён файлов
 alias fnametoutf='for file in *; do mv "$file" "`echo $file | iconv -f WINDOWS-1251 -t UTF-8`"; done'
 
-
+alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 
 # ................................   BACKUP   ................................ 
 
