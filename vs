@@ -73,33 +73,35 @@ ff_css_720_all() { for file in ./*.mp4;
 # Каталог сохранения указан в конфиге
 # Ссылки подставляемые вместо параметра могут содержать символы которые нужно экранировать поэтому ссылки нужно ставить в кавычки, однако параметр кавычить бесполезно, так как он проверяется интерпретатором до подстановки
 
+yt_dlp_outdir=~/us_dir/video
+
 # плейлисты
-alias yplck='yt-dlp --cookies yck -S "res:720" -o "/mnt/data/tmp/yt-dlp/WatchLater/%(playlist_index)s - %(title)s" $1'
-alias ypl4='yt-dlp -S "res:480" -o "/mnt/data/tmp/yt-dlp/pl/%(playlist_index)s - %(title)s" $(wl-paste)'
-alias ypl7='yt-dlp -S "res:720" -o "/mnt/data/tmp/yt-dlp/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
-alias ypl10='yt-dlp -S "res:1080" -o "/mnt/data/tmp/yt-dlp/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
+alias yplck='yt-dlp --cookies yck -S "res:720" -o "$yt_dlp_outdir/WatchLater/%(playlist_index)s - %(title)s" $1'
+alias ypl4='yt-dlp -S "res:480" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)'
+alias ypl7='yt-dlp -S "res:720" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
+alias ypl10='yt-dlp -S "res:1080" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
     # скачивание плейлиста с автонумерацией согласно плейлисту, с ведущими нулями; 
 	  # лучшее доступное видео с самым большим разрешением, но не лучше 720p
     # параметр -o перебивает параметр в конфиге, поэтому нужно указать путь
     # yck - cookie-файл для скачивания плейлиста "См позже"
 
-alias y7='yt-dlp -S "res:720" $(wl-paste) ; nice nautilus /mnt/data/tmp/yt-dlp/'
+alias y7='yt-dlp -S "res:720" $(wl-paste) ; nice nautilus $yt_dlp_outdir/'
 
 y7f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:720" $link &&
 	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')" &&
-	nice nautilus /mnt/data/tmp/yt-dlp/; }
+	nice nautilus $yt_dlp_outdir/; }
 y4f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:480" $link &&
 	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')" &&
-	nice nautilus /mnt/data/tmp/yt-dlp/; }
+	nice nautilus $yt_dlp_outdir/; }
 
-alias y4='yt-dlp -S "res:480" $(wl-paste) ; nice nautilus /mnt/data/tmp/yt-dlp/'
-alias y10='yt-dlp -S "res:1080" $(wl-paste) ; nice nautilus /mnt/data/tmp/yt-dlp/'
+alias y4='yt-dlp -S "res:480" $(wl-paste) ; nice nautilus $yt_dlp_outdir/'
+alias y10='yt-dlp -S "res:1080" $(wl-paste) ; nice nautilus $yt_dlp_outdir/'
 alias y7p='yt-dlp -S "res:720" $1'
 alias ydlp='~/.scripts/ydlp.sh'
 
