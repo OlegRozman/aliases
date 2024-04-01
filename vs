@@ -108,7 +108,7 @@ alias ydlp='~/.scripts/ydlp.sh'
 alias ybt='yt-dlp $(wl-paste)' 
 alias yl='yt-dlp -F $(wl-paste)' # список форматов
 alias yf='yt-dlp $(wl-paste) -f $1' # качать формат на выбор ($1 - номер формата)
-alias ya='yt-dlp -x'
-alias ymp3='yt-dlp -x --audio-format mp3'
+alias ya='yt-dlp -x $(wl-paste)' # качает лучшее качество
+alias ymp3='yt-dlp -x --audio-format mp3 $(wl-paste)'
 
 
