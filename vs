@@ -58,6 +58,11 @@ ff_css_720_all() { for file in ./*.mp4;
                    do ffmpeg -i "$file" -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy "${file/.mp4/_conv.mp4}"
 		   done }
 
+# аудио - извлечение
+# определение кодека, чтобы установить нужное **расширение** имени файла.
+# ffmpeg -i video.mp4
+# $1 - input_video.mp4  $2 - output_audio.aac
+alias ff_audio='ffmpeg -i $1 -vn -acodec copy $2'
 
 # crop
 # ffmpeg -i in.mp4 -filter:v "crop=500:720:500:0" out.mp4
