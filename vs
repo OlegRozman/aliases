@@ -62,7 +62,7 @@ ff_css_720_all() { for file in ./*.mp4;
 # определение кодека, чтобы установить нужное **расширение** имени файла.
 # ffmpeg -i video.mp4
 # $1 - input_video.mp4  $2 - output_audio.aac
-alias ff_audio='ffmpeg -i $1 -vn -acodec copy $2'
+ff_audio() { ffmpeg -i $1 -vn -acodec copy $2; }
 
 # crop
 # ffmpeg -i in.mp4 -filter:v "crop=500:720:500:0" out.mp4
@@ -78,7 +78,7 @@ alias ff_audio='ffmpeg -i $1 -vn -acodec copy $2'
 # Каталог сохранения указан в конфиге
 # Ссылки подставляемые вместо параметра могут содержать символы которые нужно экранировать поэтому ссылки нужно ставить в кавычки, однако параметр кавычить бесполезно, так как он проверяется интерпретатором до подстановки
 
-yt_dlp_outdir=~/us_dir/video
+yt_dlp_outdir=/mnt/data/y-dk/tmp/video
 
 # плейлисты
 alias yplck='yt-dlp --cookies yck -S "res:720" -o "$yt_dlp_outdir/WatchLater/%(playlist_index)s - %(title)s" $1'
