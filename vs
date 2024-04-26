@@ -58,6 +58,11 @@ ff_css_720_all() { for file in ./*.mp4;
                    do ffmpeg -i "$file" -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy "${file/.mp4/_conv.mp4}"
 		   done }
 
+ff_css_480_all() { for file in ./*.mp4;
+                   do ffmpeg -i "$file" -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy "${file/.mp4/_conv.mp4}"
+		   done }
+
+
 # аудио - извлечение
 # определение кодека, чтобы установить нужное **расширение** имени файла.
 # ffmpeg -i video.mp4
