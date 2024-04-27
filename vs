@@ -107,7 +107,7 @@ y4f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:480" $link &&
-	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/')" &&
+	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')" &&
 	nice nautilus $yt_dlp_outdir/; }
 
 alias y4='yt-dlp -S "res:480" $(wl-paste) ; nice nautilus $yt_dlp_outdir/'
