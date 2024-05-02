@@ -78,6 +78,7 @@ ff_audio() { ffmpeg -i $1 -vn -acodec copy $2; }
 
 # ............................  YT-DLP ............................
 
+# запуск nautilus не использовать, команда открывает каталог в запущенном экземпляре и путает открытые вкладки
 
 # By default yt-dlp tries to download the best available quality
 # Каталог сохранения указан в конфиге
