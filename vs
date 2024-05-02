@@ -98,23 +98,22 @@ alias ypl10='yt-dlp -S "res:1080" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(t
     # параметр -o перебивает параметр в конфиге, поэтому нужно указать путь
     # yck - cookie-файл для скачивания плейлиста "См позже"
 
-alias y7='yt-dlp -S "res:720" $(wl-paste) ; nice nautilus $yt_dlp_outdir/'
+alias y7='yt-dlp -S "res:720" $(wl-paste)'
 
 y7f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:720" $link &&
-	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')" &&
-	nice nautilus $yt_dlp_outdir/; }
+	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')"; }
+
 y4f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
 	yt-dlp -S "res:480" $link &&
-	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')" &&
-	nice nautilus $yt_dlp_outdir/; }
+	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')"; }
 
-alias y4='yt-dlp -S "res:480" $(wl-paste) ; nice nautilus $yt_dlp_outdir/'
-alias y10='yt-dlp -S "res:1080" $(wl-paste) ; nice nautilus $yt_dlp_outdir/'
+alias y4='yt-dlp -S "res:480" $(wl-paste)'
+alias y10='yt-dlp -S "res:1080" $(wl-paste)'
 alias y7p='yt-dlp -S "res:720" $1'
 alias ydlp='~/.scripts/ydlp.sh'
 
