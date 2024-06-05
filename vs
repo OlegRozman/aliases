@@ -99,7 +99,6 @@ alias ypl10='yt-dlp -S "res:1080" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(t
     # параметр -o перебивает параметр в конфиге, поэтому нужно указать путь
     # yck - cookie-файл для скачивания плейлиста "См позже"
 
-alias y7='yt-dlp -S "res:720" $(wl-paste)'
 
 y7f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
@@ -113,14 +112,24 @@ y4f() { link=$(wl-paste);
 	yt-dlp -S "res:480" $link &&
 	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')"; }
 
+
+alias yl='yt-dlp -F $(wl-paste)' # список форматов
+
+# когда нужно скачать не в каталог, указанный в конфиге (он на yk)
+yt-dlp -S "res:720" -o "~/download/%(title)s" $(wl-paste)
+
+# когда нет нужного единого формата видео+аудио
+# yf 136+140  или:
+# yt-dlp -f 137+140 -o "~/download/%(title)s" $(wl-paste) 
+alias yf='yt-dlp $(wl-paste) -f $1' # качать формат на выбор ($1 - номер формата)
+
+alias y7='yt-dlp -S "res:720" $(wl-paste)'
 alias y4='yt-dlp -S "res:480" $(wl-paste)'
 alias y10='yt-dlp -S "res:1080" $(wl-paste)'
 alias y7p='yt-dlp -S "res:720" $1'
 alias ydlp='~/.scripts/ydlp.sh'
 
 alias ybt='yt-dlp $(wl-paste)' 
-alias yl='yt-dlp -F $(wl-paste)' # список форматов
-alias yf='yt-dlp $(wl-paste) -f $1' # качать формат на выбор ($1 - номер формата)
 alias ya='yt-dlp -x $(wl-paste)' # качает лучшее качество
 alias ymp3='yt-dlp -x --audio-format mp3 $(wl-paste)'
 
