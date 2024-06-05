@@ -116,7 +116,7 @@ y4f() { link=$(wl-paste);
 alias yl='yt-dlp -F $(wl-paste)' # список форматов
 
 # когда нужно скачать не в каталог, указанный в конфиге (он на yk)
-yt-dlp -S "res:720" -o "~/download/%(title)s" $(wl-paste)
+alias y7download='yt-dlp -S "res:720" -o "~/download/%(title)s" $(wl-paste)'
 
 # когда нет нужного единого формата видео+аудио
 # yf 136+140  или:
