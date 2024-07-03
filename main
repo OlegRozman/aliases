@@ -34,8 +34,7 @@ alias mdrweb='sshfs drweb: ~/remote/drweb'
 # ................................   КРИПТО ПРО   ................................   
 
 
-alias cdkey='cd /mnt/data/c-kv/key/Crypto\ Pro; ls'
-alias cdhdimg='cd /var/opt/cprocsp/keys/cs; ls'
+alias cdkey='cd /var/opt/cprocsp/keys/cs; ls'
 
 cpkey () {
 	folderkey=$1;  # короткое имя ; исходный каталог - каталог нахождения копируемого
