@@ -109,8 +109,12 @@ y7f() { link=$(wl-paste);
 y4f() { link=$(wl-paste);
 	name="$(yt-dlp --print filename $link)";
 	echo $name;
+	new_filename=$(echo "$name" | sed 's/[:^a-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')
 	yt-dlp -S "res:480" $link &&
-	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')"; }
+	mv "$name" "$new_filename"
+#	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')"; 
+
+}
 
 
 alias yl='yt-dlp -F $(wl-paste)' # список форматов
