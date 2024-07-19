@@ -100,20 +100,34 @@ alias ypl10='yt-dlp -S "res:1080" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(t
     # yck - cookie-файл для скачивания плейлиста "См позже"
 
 
+
+y10f() { link=$(wl-paste);
+	title="$(yt-dlp --print title $link)";
+	filename="$(yt-dlp --print filename $link)";
+	ext="$(yt-dlp --print ext $link)";
+	echo "\n\n$title\n\n$filename\n\n$ext\n\n";
+	new_title=$(echo "$title" | sed 's/[^а-яА-Яa-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_$//g');
+	yt-dlp -S "res:1080" $link && mv "$filename" ~/download/"$new_title.$ext" 
+}
+
+
 y7f() { link=$(wl-paste);
-	name="$(yt-dlp --print filename $link)";
-	echo $name;
-	yt-dlp -S "res:720" $link &&
-	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')"; }
+	title="$(yt-dlp --print title $link)";
+	filename="$(yt-dlp --print filename $link)";
+	ext="$(yt-dlp --print ext $link)";
+	echo "\n\n$title\n\n$filename\n\n$ext\n\n";
+	new_title=$(echo "$title" | sed 's/[^а-яА-Яa-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_$//g');
+	yt-dlp -S "res:720" $link && mv "$filename" ~/download/"$new_title.$ext" 
+}
+
 
 y4f() { link=$(wl-paste);
-	name="$(yt-dlp --print filename $link)";
-	echo $name;
-	new_filename=$(echo "$name" | sed 's/[:^a-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')
-	yt-dlp -S "res:480" $link &&
-	mv "$name" "$new_filename"
-#	mv "$name" "$(echo "$name" | sed 's/[:："？＂?.№ —,;!&#]/_/g' | sed 's/__/_/g' | sed 's/_webm/.webm/' | sed 's/_mp4/.mp4/')"; 
-
+	title="$(yt-dlp --print title $link)";
+	filename="$(yt-dlp --print filename $link)";
+	ext="$(yt-dlp --print ext $link)";
+	echo "\n\n$title\n\n$filename\n\n$ext\n\n";
+	new_title=$(echo "$title" | sed 's/[^а-яА-Яa-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_$//g');
+	yt-dlp -S "res:480" $link && mv "$filename" ~/download/"$new_title.$ext" 
 }
 
 
