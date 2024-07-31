@@ -35,6 +35,21 @@ picrotatef() { mkdir rotate;
 alias pdftojpg='pdftocairo -jpeg $1'   # $1 - имя pdf файла
 
 
+#........................... Lumix ..............................
+# для фото и видео с камеры Lumix: дату в имя плюс конвертация видео
+lumix() {
+	mkdir ./tmp ./tmp/1
+	for file in *.MTS
+		do file_rn=$(date -d @$(stat -c %Y $file) '+%Y-%m-%d_%H-%M-%S').mts
+		cp "$file" ./tmp/1/$file_rn
+		ff_css_v ./tmp/1/$file_rn ./tmp/"${file_rn/.mts/.mp4}"
+	done
+
+	for file in *.JPG
+		do file_rn=$(date -d @$(stat -c %Y $file) '+%Y-%m-%d_%H-%M-%S').jpg
+		cp "$file" ./tmp/$file_rn
+	done
+}
 
 
 # ..........................  FFMPEG  ...........................
