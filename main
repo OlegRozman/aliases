@@ -114,7 +114,7 @@ rname () {
 		# Rename the file, leaving only letters and digits
 		name=$(basename "$file" | sed 's/.[^.]*$//')
 		extension=$(echo ${file##*.})
-		new_name=$(echo "$name"| sed -e 's/[^[:alpha:]^[:digit:]-]/_/g')
+		new_name=$(echo "$name"| sed -e 's/[^[:alpha:]^[:digit:]-]/_/g' | sed -e 's/__/_/g')
 		mv "$file" "$new_name.$extension"
 
 		# Display a message that the file has been renamed successfully
