@@ -254,3 +254,9 @@ restic-job() {
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
 alias restic_job_do='restic -r $bp_job'
 alias restic_job-forget='restic -r $bp_job forget --keep-last 20 --prune'
+
+
+
+# ................................   TLDR   ................................
+
+tldr_my() { sed -n "/$1/,/$1_end/p" ~/app/app_data/Obsidian/Linux/tldr.md }
