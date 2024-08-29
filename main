@@ -154,6 +154,7 @@ alias dusortf='du -h /home | grep "^\s*[0-9\.]\+M" | sort -rn'
 # ................................ man yandex-disk : stop, start, publish, unpublish
 
 alias yk='yandex-disk status'
+alias ykr='yandex-disk stop && yandex-disk start'
 
 
 # ................................ ls
