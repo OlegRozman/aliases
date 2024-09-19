@@ -53,7 +53,8 @@ cpkey () {
 
 # ................................   СИСТЕМА   ................................ 
 
-cash_cl() { sudo sync && sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches' }
+alias jl_data='journalctl --since $1'
+cash_cl() { sudo sync && sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches' }  # может зависнуть - sync наверняка не может сбросить данные кеша на носитель
 alias sp='systemctl suspend'
 alias rt='systemctl reboot'
 alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
