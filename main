@@ -25,10 +25,8 @@ alias push='cd ~/.aliases; git diff; read; git add .; git commit -m "comment"; g
 #  ................................   SSH    ................................ 
 
 
-alias minet='sshfs inet: ~/remote/inet'
-alias mdrweb='sshfs drweb: ~/remote/drweb'
-
-
+alias mount_inet='sshfs inet: ~/remote/inet'
+alias mount_drweb='sshfs drweb: ~/remote/drweb'
 
 
 # ................................   КРИПТО ПРО   ................................   
@@ -55,7 +53,7 @@ cpkey () {
 
 # ................................   СИСТЕМА   ................................ 
 
-
+cash_cl() { sudo sync && sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches' }
 alias sp='systemctl suspend'
 alias rt='systemctl reboot'
 alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
