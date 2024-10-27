@@ -104,7 +104,7 @@ alias tordel='trash-put ~/download/*.torrent'
 
 # ................................ rename
 
-alias trname='echo $1 | tr ' ' '_' | wl-copy'
+trname () { echo $1 | tr ' ' '_' | wl-copy }
 
 alias name='rename -av " " "_" * ; rename -av "__" "_" *'
 
