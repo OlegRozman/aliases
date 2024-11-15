@@ -74,7 +74,7 @@ alias listfpak='flatpak list --app'
 
 alias ups='sudo dnf update'                    
 alias ill='sudo dnf install'
-alias rmv='sudo dnf remove $1 && sudo dnf autoremove'
+rmv () { sudo dnf remove $1 && sudo dnf autoremove }
 alias ilist='dnf list --installed | grep'
 alias rlist='sudo dnf repolist'
 
