@@ -108,18 +108,51 @@ trname () { echo $1 | tr ' ' '_' | wl-copy }
 
 alias name='rename -av " " "_" * ; rename -av "__" "_" *'
 
-# к имени каталога добавляет точку - ПРАВИТЬ !!!
+# к имени каталога добавляет точку
+# испз только для переименования файлов, потому как если и каталогов то файлы уже не найдет, т.к. каталог переименован будет
 rname () {
-	for file in *
-	do
-		# Rename the file, leaving only letters and digits
-		name=$(basename "$file" | sed 's/.[^.]*$//')
-		extension=$(echo ${file##*.})
-		new_name=$(echo "$name"| sed -e 's/[^[:alpha:]^[:digit:]-]/_/g' | sed -e 's/__/_/g')
-		mv "$file" "$new_name.$extension"
+	# Директория для поиска (по умолчанию текущая) - функция принимает её в качестве внешнего аргумента
+	SEARCH_DIR=${1:-.}
 
-		# Display a message that the file has been renamed successfully
-		echo "File renamed to $new_name.$extension"
+	# Обработка всех файлов в директории
+	find "$SEARCH_DIR" -type f | while read -r FILE; do
+	    # Извлекаем директорию, имя файла и расширение
+	    DIRNAME=$(dirname "$FILE")
+	    BASENAME=$(basename "$FILE")
+	    EXTENSION="${BASENAME##*.}"       # Расширение файла
+	    FILENAME="${BASENAME%.*}"         # Имя файла без расширения
+
+	    # Если файл без расширения, обрабатываем как есть
+	    if [[ "$FILENAME" == "$BASENAME" ]]; then
+	        NEW_FILENAME=$(echo "$FILENAME" | sed -e 's/[^[:alpha:]^[:digit:]-]/_/g' | sed -e 's/__/_/g')
+	        NEW_BASENAME="$NEW_FILENAME"
+	    else
+	        # Заменяем символы в имени файла, сохраняя расширение
+	        NEW_FILENAME=$(echo "$FILENAME" | sed -e 's/[^[:alpha:]^[:digit:]-]/_/g' | sed -e 's/__/_/g')
+	        NEW_BASENAME="$NEW_FILENAME.$EXTENSION"
+	    fi
+
+	    # Если имя изменилось, переименовываем
+	    if [ "$BASENAME" != "$NEW_BASENAME" ]; then
+	        mv "$FILE" "$DIRNAME/$NEW_BASENAME"
+	        echo "Renamed: $FILE -> $DIRNAME/$NEW_BASENAME"
+	    fi
+	done
+}
+
+
+rname_find () {
+	# Директория для поиска (по умолчанию текущая)
+	SEARCH_DIR=${1:-.}
+
+	# Поиск файлов с "[skl]" в имени и переименование
+	find "$SEARCH_DIR" -type f -name '*[skladchik.org]*' | while read -r FILE; do
+		# Новое имя файла
+		NEW_NAME=$(echo "$FILE" | sed 's/\[skladchik.org\]//g')
+    
+    		# Переименование файла
+    		mv "$FILE" "$NEW_NAME"
+    		echo "Renamed: $FILE -> $NEW_NAME"
 	done
 }
 
