@@ -148,7 +148,7 @@ rname_find () {
 	# Поиск файлов с "[skl]" в имени и переименование
 	find "$SEARCH_DIR" -type f -name '*[skladchik.org]*' | while read -r FILE; do
 		# Новое имя файла
-		NEW_NAME=$(echo "$FILE" | sed 's/\[skladchik.org\]//g')
+		NEW_NAME=$(echo "$FILE" | sed 's/\[skladchik.org\] //g')
     
     		# Переименование файла
     		mv "$FILE" "$NEW_NAME"
