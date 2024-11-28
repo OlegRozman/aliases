@@ -60,6 +60,15 @@ alias rt='systemctl reboot'
 alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
 
 
+# ................................ files 
+
+mkdir_gen () {
+	for i in $(seq -w 1 15); do
+		mkdir "$i"
+		echo "Created directory: dir_$i"
+	done
+}
+
 # ................................ path to clipboard
 
 alias ptoc='pwd | wl-copy'
