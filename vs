@@ -165,7 +165,7 @@ alias y7p='yt-dlp -S "res:720" $1'
 alias ydlp='~/.scripts/ydlp.sh'
 
 alias ybt='yt-dlp $(wl-paste)' 
-alias ya='yt-dlp -x $(wl-paste)' # качает лучшее качество
+alias yaudio='yt-dlp -x $(wl-paste)' # качает лучшее качество
 alias ymp3='yt-dlp -x --audio-format mp3 $(wl-paste)'
 
 
