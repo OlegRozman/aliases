@@ -86,8 +86,10 @@ ff_css_720_all() {
     do ffmpeg -i "$file" -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"
     done }
 
-ff_css_480_all() { for file in ./*.mp4;
-    do ffmpeg -i "$file" -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy "${file/.mp4/_conv.mp4}"
+ff_css_480_all() { 
+    mkdir conv
+    for file in ./*.mp4;
+    do ffmpeg -i "$file" -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"
     done }
 
 
