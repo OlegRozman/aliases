@@ -58,7 +58,7 @@ ff_i() { for file in *; do
 		# Проверяем, существует ли файл
 		if [[ -f "$file" ]]; then
 			echo "Файл: $file"
-			ffprobe -i "$file" 2>&1 | grep "Stream #0:0"
+			ffprobe -i "$file" 2>&1 | grep "Video:"
 			echo "---------------------------------"
 		fi
 	done
