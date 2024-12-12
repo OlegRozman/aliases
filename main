@@ -14,7 +14,7 @@
 # ................................   GIT    ................................ 
 
 
-alias pull='echo "git zsh\n" && cd ~/.aliases && git pull --rebase && cd && echo "\n\nyandex disk" && yandex-disk status'
+alias pull='echo "   --- GIT ZSH ---\n" && cd ~/.aliases && git pull --rebase && cd && echo "\n\n   --- YANDEX DISK ---" && yandex-disk status'
 alias push='cd ~/.aliases; git diff; read; git add .; git commit -m "comment"; git push; cd'
 # нажать q, потом enter
 # read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1;
