@@ -4,7 +4,7 @@
 # ........................  IMAGEMAGIC  ........................
 
 
-alias picresizeone='convert $1 -scale $2% -quality 80 $3'
+alias picresizeone='magick $1 -scale $2% -quality 80 $3'
 # исходный файл; проценты масштабирования; выходной файл
 
 # переменные ..._value принимают значения позиционных параметров $1 и $2, 
@@ -14,7 +14,7 @@ picresize() {
 	      scale_value=${1:-100}
 	      quality_value=${2:-80}
 	      for i in *.* 
-	          do convert "$i" -scale $scale_value% -quality $quality_value ./resize/"$i"
+	          do magick "$i" -scale $scale_value% -quality $quality_value ./resize/"$i"
 	      done 
 	      echo $scale_value
 	      echo $quality_value 
