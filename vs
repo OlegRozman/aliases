@@ -3,6 +3,7 @@
 
 # ........................  IMAGEMAGIC  ........................
 
+pngtojpg () { for file in *.png; do magick "$file" "${file/.png/.jpg}"; done }
 
 alias picresizeone='magick $1 -scale $2% -quality 80 $3'
 # исходный файл; проценты масштабирования; выходной файл
