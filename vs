@@ -126,11 +126,13 @@ ff_audio() { ffmpeg -i $1 -vn -acodec copy $2; }
 # если не указывать путь сохранение, то по-умолчанию в корень домашнего каталога
 yt_dlp_outdir=/mnt/data/y-dk/tmp/video
 
+proxy='socks5://127.0.0.1:2080'
+
 # плейлисты
-alias yplck='yt-dlp --cookies yck -S "res:720" -o "$yt_dlp_outdir/WatchLater/%(playlist_index)s - %(title)s" $1'
-alias ypl4='yt-dlp -S "res:480" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)'
-alias ypl7='yt-dlp -S "res:720" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
-alias ypl10='yt-dlp -S "res:1080" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
+alias yplck='yt-dlp --cookies yck -S "res:720" -o "$yt_dlp_outdir/WatchLater/%(playlist_index)s - %(title)s" --proxy $proxy $1'
+alias ypl4='yt-dlp -S "res:480" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" --proxy $proxy $(wl-paste)'
+alias ypl7='yt-dlp -S "res:720" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" --proxy $proxy $(wl-paste)' 
+alias ypl10='yt-dlp -S "res:1080" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" --proxy $proxy $(wl-paste)' 
     # скачивание плейлиста с автонумерацией согласно плейлисту, с ведущими нулями; 
 	  # лучшее доступное видео с самым большим разрешением, но не лучше 720p
     # параметр -o перебивает параметр в конфиге, поэтому нужно указать путь
@@ -139,53 +141,53 @@ alias ypl10='yt-dlp -S "res:1080" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(t
 
 
 y10f() { link=$(wl-paste);
-	title="$(yt-dlp --print title $link)";
-	filename="$(yt-dlp --print filename $link)";
-	ext="$(yt-dlp --print ext $link)";
+	title="$(yt-dlp --print title --proxy $proxy $link)";
+	filename="$(yt-dlp --print filename --proxy $proxy $link)";
+	ext="$(yt-dlp --print ext --proxy $proxy $link)";
 	echo "\n\n$title\n\n$filename\n\n$ext\n\n";
 	new_title=$(echo "$title" | sed 's/[^а-яА-Яa-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_$//g');
-	yt-dlp -S "res:1080" $link && mv "$filename" ~/download/"$new_title.$ext" 
+	yt-dlp -S "res:1080" --proxy $proxy $link && mv "$filename" ~/download/"$new_title.$ext" 
 }
 
 
 y7f() { link=$(wl-paste);
-	title="$(yt-dlp --print title $link)";
-	filename="$(yt-dlp --print filename $link)";
-	ext="$(yt-dlp --print ext $link)";
+	title="$(yt-dlp --print title --proxy $proxy $link)";
+	filename="$(yt-dlp --print filename --proxy $proxy $link)";
+	ext="$(yt-dlp --print ext --proxy $proxy $link)";
 	echo "\n\n$title\n\n$filename\n\n$ext\n\n";
 	new_title=$(echo "$title" | sed 's/[^а-яА-Яa-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_$//g');
-	yt-dlp -S "res:720" $link && mv "$filename" ~/download/"$new_title.$ext" 
+	yt-dlp -S "res:720" --proxy $proxy $link && mv "$filename" ~/download/"$new_title.$ext" 
 }
 
 
 y4f() { link=$(wl-paste);
-	title="$(yt-dlp --print title $link)";
-	filename="$(yt-dlp --print filename $link)";
-	ext="$(yt-dlp --print ext $link)";
+	title="$(yt-dlp --print title --proxy $proxy $link)";
+	filename="$(yt-dlp --print filename --proxy $proxy $link)";
+	ext="$(yt-dlp --print ext --proxy $proxy $link)";
 	echo "\n\n$title\n\n$filename\n\n$ext\n\n";
 	new_title=$(echo "$title" | sed 's/[^а-яА-Яa-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_$//g');
-	yt-dlp -S "res:480" $link && mv "$filename" ~/download/"$new_title.$ext" 
+	yt-dlp -S "res:480" --proxy $proxy $link && mv "$filename" ~/download/"$new_title.$ext" 
 }
 
 
-alias yl='yt-dlp -F $(wl-paste)' # список форматов
+alias yl='yt-dlp -F --proxy $proxy $(wl-paste)' # список форматов
 
 # когда нужно скачать не в каталог, указанный в конфиге (он на yk)
-alias y7download='yt-dlp -S "res:720" -o "~/download/%(title)s" $(wl-paste)'
+alias y7download='yt-dlp -S "res:720" -o "~/download/%(title)s" --proxy $proxy $(wl-paste)'
 
 # когда нет нужного единого формата видео+аудио
 # yf 136+140  или:
 # yt-dlp -f 137+140 -o "~/download/%(title)s" $(wl-paste) 
-alias yf='yt-dlp $(wl-paste) -f $1' # качать формат на выбор ($1 - номер формата)
+alias yf='yt-dlp --proxy $proxy $(wl-paste) -f $1' # качать формат на выбор ($1 - номер формата)
 
-alias y7='yt-dlp -S "res:720" $(wl-paste)'
-alias y4='yt-dlp -S "res:480" $(wl-paste)'
-alias y10='yt-dlp -S "res:1080" $(wl-paste)'
-alias y7p='yt-dlp -S "res:720" $1'
+alias y7='yt-dlp -S "res:720" --proxy $proxy $(wl-paste)'
+alias y4='yt-dlp -S "res:480" --proxy $proxy $(wl-paste)'
+alias y10='yt-dlp -S "res:1080" --proxy $proxy $(wl-paste)'
+alias y7p='yt-dlp -S "res:720" --proxy $proxy $1'
 alias ydlp='~/.scripts/ydlp.sh'
 
-alias ybt='yt-dlp $(wl-paste)' 
-alias yaudio='yt-dlp -x $(wl-paste)' # качает лучшее качество
-alias ymp3='yt-dlp -x --audio-format mp3 $(wl-paste)'
+alias ybt='yt-dlp --proxy $proxy $(wl-paste)' 
+alias yaudio='yt-dlp -x --proxy $proxy $(wl-paste)' # качает лучшее качество
+alias ymp3='yt-dlp -x --audio-format mp3 --proxy $proxy $(wl-paste)'
 
 
