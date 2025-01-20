@@ -258,6 +258,12 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 # ................................   BACKUP   ................................ 
 
 
+# ................................ sync
+
+alias sync_do_j='restic -r /mnt/data/y-dk/dbs/bkp/sync-j --password-file ~/sys/script/sync.pwd'
+alias sync_do_h='restic -r /mnt/data/y-dk/dbs/bkp/sync-h --password-file ~/sys/script/sync.pwd'
+
+
 # ................................ home
 
 bp_torrent=/mnt/ext2Tb/bp_torrent
