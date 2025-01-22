@@ -260,10 +260,20 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 
 # ................................ sync
 
-alias sync_do_j='restic -r /mnt/data/y-dk/dbs/bkp/sync-j --password-file ~/sys/script/sync.pwd'
-alias sync_do_h='restic -r /mnt/data/y-dk/dbs/bkp/sync-h --password-file ~/sys/script/sync.pwd'
+alias apph-do='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
+alias appj-do='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
 
-alias sync_log_j='bat /mnt/data/y-dk/dbs/bkp/sync-j.log'
+alias apph-log='bat /mnt/data/y-dk/dbs/bkp/apph.log'
+alias appj-log='bat /mnt/data/y-dk/dbs/bkp/appj.log'
+
+sync-to-apph() {
+    restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app
+}
+
+sync-to-appj() {
+    restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app
+}
+
 
 # ................................ home
 
