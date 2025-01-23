@@ -267,11 +267,11 @@ alias apph-log='bat /mnt/data/y-dk/dbs/bkp/apph.log'
 alias appj-log='bat /mnt/data/y-dk/dbs/bkp/appj.log'
 
 sync-to-apph() {
-    restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app
+    restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
 }
 
 sync-to-appj() {
-    restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app
+    restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
 }
 
 
