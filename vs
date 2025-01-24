@@ -72,14 +72,14 @@ ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
     # ff_cp 10 50 12.mp4 out.mp4 - c 10 по 50 секунду
 	
 # конверт для телека h265 - h264, in и out расширение mp4
-ff_tv() { ffmpeg -i $1 -c:v libx264 -c:a copy $2; }
+ff_tv() { ffmpeg -i $1 -c:v libx264 -c:a copy ./conv/"$file"; }
 	
 # компрессия
-ff_css_va() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a aac $2; }
-ff_css_v() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a copy $2; }
+ff_css_va() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a aac ./conv/"$file"; }
+ff_css_v() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"; }
 
-ff_css_720() { ffmpeg -i $1 -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy $2; }
-ff_css_480() { ffmpeg -i $1 -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy $2; }
+ff_css_720() { ffmpeg -i $1 -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"; }
+ff_css_480() { ffmpeg -i $1 -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"; }
 
 ff_css_v_all() { 
     mkdir conv
@@ -103,8 +103,8 @@ ff_css_480_all() {
 # аудио - извлечение
 # определение кодека, чтобы установить нужное **расширение** имени файла.
 # ffmpeg -i video.mp4
-# $1 - input_video.mp4  $2 - output_audio.aac
-ff_audio() { ffmpeg -i $1 -vn -acodec copy $2; }
+# $1 - input_video.mp4 
+ff_audio() { ffmpeg -i $1 -vn -acodec copy ./conv/"$file"; }
 
 # crop
 # ffmpeg -i in.mp4 -filter:v "crop=500:720:500:0" out.mp4
