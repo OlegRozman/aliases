@@ -293,7 +293,7 @@ alias restic_data-forget='restic -r /$bp_data/data_repo forget --keep-last 20 --
 
 # bp_job=/run/media/cs/orico-256/bp
 
-bp_job=/mnt/data/y-dk/job/bp
+bp_job=/mnt/data/y-dk/dbs/bkp/job
 
 restic-job() {
    yandex-disk stop
