@@ -280,13 +280,13 @@ sync-to-appj() {
 bp_torrent=/mnt/ext2Tb/bp_torrent
 bp_data=/mnt/ext2Tb/bp_data
 
-alias restic_data='restic -r $bp_data/data_repo --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
+alias restic_data='restic -r $bp_data/data_repo --password-file ~/sys/script/app-repo.pwd --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
 alias rsync_torrent='rsync -avh --delete-after --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
 alias rsync_vmh='rsync -avh --delete-after --log-file=/mnt/ext2Tb/bp_vm/rsync.log /mnt/vm/gnome-boxes /mnt/vm/vbox /mnt/ext2Tb/bp_vm'
 
 # snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_data_do='restic -r $bp_data/data_repo'
-alias restic_data-forget='restic -r /$bp_data/data_repo forget --keep-last 20 --prune'
+alias restic_data_do='restic -r $bp_data/data_repo --password-file ~/sys/script/app-repo.pwd'
+alias restic_data-forget='restic -r /$bp_data/data_repo --password-file ~/sys/script/app-repo.pwd forget --keep-last 20 --prune'
 
 
 # ................................ job
@@ -297,7 +297,7 @@ bp_job=/mnt/data/y-dk/dbs/bkp/job
 
 restic-job() {
    yandex-disk stop
-   restic -r $bp_job --verbose backup --files-from $bp_job/list_bp.txt --exclude-caches --exclude-file $bp_job/excludes.txt
+   restic -r $bp_job --password-file ~/sys/script/app-repo.pwd --verbose backup --files-from $bp_job/list_bp.txt --exclude-caches --exclude-file $bp_job/excludes.txt
    yandex-disk start
 }
 
@@ -305,8 +305,8 @@ restic-job() {
 #   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
 
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_job_do='restic -r $bp_job'
-alias restic_job-forget='restic -r $bp_job forget --keep-last 20 --prune'
+alias restic_job_do='restic -r $bp_job --password-file ~/sys/script/app-repo.pwd'
+alias restic_job-forget='restic -r $bp_job --password-file ~/sys/script/app-repo.pwd forget --keep-last 20 --prune'
 
 
 
