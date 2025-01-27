@@ -260,17 +260,17 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 
 # ................................ sync
 
-alias apph-do='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
-alias appj-do='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
+alias apph_do='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
+alias appj_do='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
 
-alias apph-log='less +G /mnt/data/y-dk/dbs/bkp/apph.log'
-alias appj-log='less +G /mnt/data/y-dk/dbs/bkp/appj.log'
+alias apph_log='less +G /mnt/data/y-dk/dbs/bkp/apph.log'
+alias appj_log='less +G /mnt/data/y-dk/dbs/bkp/appj.log'
 
-sync-to-apph() {
+sync_to_apph() {
     restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
 }
 
-sync-to-appj() {
+sync_to_appj() {
     restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
 }
 
@@ -286,7 +286,7 @@ alias rsync_vmh='rsync -avh --delete-after --log-file=/mnt/ext2Tb/bp_vm/rsync.lo
 
 # snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
 alias restic_data_do='restic -r $bp_data/data_repo --password-file ~/sys/script/app-repo.pwd'
-alias restic_data-forget='restic -r /$bp_data/data_repo --password-file ~/sys/script/app-repo.pwd forget --keep-last 20 --prune'
+alias restic_data_forget='restic -r /$bp_data/data_repo --password-file ~/sys/script/app-repo.pwd forget --keep-last 20 --prune'
 
 
 # ................................ job
@@ -295,7 +295,7 @@ alias restic_data-forget='restic -r /$bp_data/data_repo --password-file ~/sys/sc
 
 bp_job=/mnt/data/y-dk/dbs/bkp/job
 
-restic-job() {
+restic_job() {
    yandex-disk stop
    restic -r $bp_job --password-file ~/sys/script/app-repo.pwd --verbose backup --files-from $bp_job/list_bp.txt --exclude-caches --exclude-file $bp_job/excludes.txt
    yandex-disk start
@@ -306,7 +306,7 @@ restic-job() {
 
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
 alias restic_job_do='restic -r $bp_job --password-file ~/sys/script/app-repo.pwd'
-alias restic_job-forget='restic -r $bp_job --password-file ~/sys/script/app-repo.pwd forget --keep-last 20 --prune'
+alias restic_job_forget='restic -r $bp_job --password-file ~/sys/script/app-repo.pwd forget --keep-last 20 --prune'
 
 
 
