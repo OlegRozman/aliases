@@ -265,8 +265,8 @@ alias repo_j_do='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/scr
 
 alias bkp_app='sh ~/sys/script/app-bkp.sh'
 
-alias log_bkp_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_h.log'
-alias log_bkp_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_j.log'
+alias log_bkp_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_h.log'
+alias log_bkp_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_j.log'
 
 synch() {
     restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
