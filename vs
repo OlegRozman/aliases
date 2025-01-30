@@ -72,14 +72,14 @@ ff_cp() { ffmpeg -ss $1 -to $2 -i $3 -c copy $4; }
     # ff_cp 10 50 12.mp4 out.mp4 - c 10 по 50 секунду
 	
 # конверт для телека h265 - h264, in и out расширение mp4
-ff_tv() { ffmpeg -i $1 -c:v libx264 -c:a copy ./conv/"$file"; }
+ff_tv() { if [ ! -d "conv" ]; then mkdir conv; fi; ffmpeg -i $1 -c:v libx264 -c:a copy ./conv/"$1"; }
 	
 # компрессия
-ff_css_va() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a aac ./conv/"$file"; }
-ff_css_v() { ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"; }
+ff_css_va() { if [ ! -d "conv" ]; then mkdir conv; fi; ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a aac ./conv/"$1"; }
+ff_css_v() { if [ ! -d "conv" ]; then mkdir conv; fi; ffmpeg -i $1 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$1"; }
 
-ff_css_720() { ffmpeg -i $1 -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"; }
-ff_css_480() { ffmpeg -i $1 -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"; }
+ff_css_720() { if [ ! -d "conv" ]; then mkdir conv; fi; ffmpeg -i $1 -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$1"; }
+ff_css_480() { if [ ! -d "conv" ]; then mkdir conv; fi; ffmpeg -i $1 -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$1"; }
 
 ff_css_v_all() { 
     mkdir conv
