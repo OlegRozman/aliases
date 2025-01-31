@@ -168,17 +168,15 @@ rname_find () {
 
 # ................................ config
 
-alias al='alias | bat'
+alias alg='alias | grep $1'
 alias all='bat ~/.aliases/main'
 alias ala='bat ~/.aliases/arc'
 alias alv='bat ~/.aliases/vs'
+alias ale='bat ~/.aliases/edit'
 alias alled='nvim ~/.aliases/main' 
 alias alaed='nvim ~/.aliases/arc' 
 alias alved='nvim ~/.aliases/vs' 
-alias alssh='bat ~/.ssh/config' # псевдонимы для ssh подключений
-alias alp='alias -p'
-alias src='source ~/.zshrc'
-
+alias aleed='nvim ~/.aliases/edit'
 
 # ................................ Size
 
