@@ -177,6 +177,7 @@ alias alled='nvim ~/.aliases/main'
 alias alaed='nvim ~/.aliases/arc' 
 alias alved='nvim ~/.aliases/vs' 
 alias aleed='nvim ~/.aliases/edit'
+alias src='source ~/.zshrc'
 
 # ................................ Size
 
