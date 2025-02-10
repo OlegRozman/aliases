@@ -107,7 +107,7 @@ ff_css_480_all() {
 ff_audio_ext() { ffmpeg -i $1 -vn -acodec copy ./conv/"$file"; }
 
 # конвертация wav to aac
-ff_wav_to_aac() { -i $1 -c:a aac -b:a 192k $2 }
+ff_wav_to_aac() { ffmpeg -i $1 -c:a aac -b:a 192k $2 }
 
 # crop
 # ffmpeg -i in.mp4 -filter:v "crop=500:720:500:0" out.mp4
