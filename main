@@ -31,7 +31,17 @@ alias mount_drweb='sshfs drweb: ~/remote/drweb'
 
 # ................................   КРИПТО ПРО и cer   ................................   
 
-alias cer='openssl x509 -in $1 -text -noout'
+cer () { for i in *.cer ; do
+	 echo
+	 openssl x509 -in "$i" -text -noout | sed 's/  */ /g' | awk '/Serial Number:/ {getline; print "sn:", $0}' 
+         openssl x509 -in "$i" -text -noout | grep -o 'CN=[^,]*' 
+         openssl x509 -in "$i" -text -noout | grep -o 'Not Before[^,]*' 
+         openssl x509 -in "$i" -text -noout | grep -o 'Not After[^,]*' 
+         openssl x509 -in "$i" -text -noout | awk '/X509v3 CRL Distribution Points:/ {flag=1} /X509v3 Subject Key Identifier:/ {flag=0} flag' | sed 's/  */ /g'
+	 echo 
+	 echo
+ done
+ }
 
 
 alias cdkey='cd /var/opt/cprocsp/keys/cs; ls'
