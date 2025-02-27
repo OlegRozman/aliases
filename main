@@ -29,7 +29,9 @@ alias mount_inet='sshfs inet: ~/remote/inet'
 alias mount_drweb='sshfs drweb: ~/remote/drweb'
 
 
-# ................................   КРИПТО ПРО   ................................   
+# ................................   КРИПТО ПРО и cer   ................................   
+
+alias cer='openssl x509 -in $1 -text -noout'
 
 
 alias cdkey='cd /var/opt/cprocsp/keys/cs; ls'
