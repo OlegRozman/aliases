@@ -62,6 +62,40 @@ cpkey () {
 	fi }
 
 
+cer_rename () {
+    for i in *.cer ; do
+
+	TEXT_1=$(openssl x509 -in "$i" -text -noout | grep -o 'CN=[^,]*')
+	TEXT_2=$(openssl x509 -in "$i" -text -noout | grep -o 'Not After[^,]*')
+
+	# Извлекаем вторую строку с CN= (пропускаем первую)
+	FULL_NAME=$(echo "$TEXT_1" | sed '1d' | sed 's/CN=//')
+
+	# Преобразуем ФИО в формат "Фамилия"
+	SURNAME=$(echo "$FULL_NAME" | awk '{print $1}')
+
+	# Извлекаем дату и форматируем в ГГГГ_ММ_ДД
+	DATE_RAW=$(echo "$TEXT_2" | awk '{print $5, $4, $7}')
+	DATE_FORMATTED=$(date -d "$DATE_RAW" +"%Y_%m_%d")
+
+	# Формируем новое имя файла
+	NEW_FILENAME="${SURNAME}_${DATE_FORMATTED}.cer"
+
+	# Проверяем, чтобы не перезаписать существующий файл
+	if [ -e "$NEW_FILENAME" ]; then
+        	echo "Ошибка: файл $NEW_FILENAME уже существует. Пропускаем $i."
+		continue
+	fi
+
+	# Переименовываем файл
+	mv "$i" "$NEW_FILENAME"
+
+	echo "Файл переименован в: $NEW_FILENAME"
+
+    done
+}
+
+
 
 # ................................   СИСТЕМА   ................................ 
 
