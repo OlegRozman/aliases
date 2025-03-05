@@ -75,7 +75,7 @@ cer_rename () {
 	SURNAME=$(echo "$FULL_NAME" | awk '{print $1}')
 
 	# Извлекаем дату и форматируем в ГГГГ_ММ_ДД
-	DATE_RAW=$(echo "$TEXT_2" | awk '{print $5, $4, $7}')
+	DATE_RAW=$(echo "$TEXT_2" | sed '1d' | awk '{print $5, $4, $7}')
 	DATE_FORMATTED=$(date -d "$DATE_RAW" +"%Y_%m_%d")
 
 	# Формируем новое имя файла
