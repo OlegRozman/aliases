@@ -33,7 +33,7 @@ alias mount_drweb='sshfs drweb: ~/remote/drweb'
 
 cer () { for i in *.cer ; do
 	 echo
-	 openssl x509 -in "$i" -text -noout | sed 's/  */ /g' | awk '/Serial Number:/ {getline; print "sn:", $0}' 
+	 openssl x509 -in "$i" -text -noout | sed 's/  */ /g' | awk '/Serial Number:/ {getline; print "sn  ", $0}' | sed 's/://g'
          openssl x509 -in "$i" -text -noout | grep -o 'CN=[^,]*' 
          openssl x509 -in "$i" -text -noout | grep -o 'Not Before[^,]*' 
          openssl x509 -in "$i" -text -noout | grep -o 'Not After[^,]*' 
