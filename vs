@@ -127,7 +127,7 @@ ff_wav_to_aac() { ffmpeg -i $1 -c:a aac -b:a 192k $2 }
 # -P, --paths [TYPES:]PATH   The paths where the files should be downloaded.
 # путь сохранения в конфиг файле имеет приоритет, необходимо закомментировать строку
 # если не указывать путь сохранение, то по-умолчанию в корень домашнего каталога
-yt_dlp_outdir=/mnt/data/y-dk/tmp/video
+yt_dlp_outdir=/home/cs/download/video
 
 proxy='socks5://127.0.0.1:2080'
 
