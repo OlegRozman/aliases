@@ -314,14 +314,13 @@ alias bkp_app='sh ~/sys/script/app-bkp.sh'
 alias log_bkp_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_h.log'
 alias log_bkp_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_j.log'
 
-name_date="$(date +"%Y-%m-%d_%H-%M-%S").md"
 
 synch() {
-    restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data && touch /home/cs/app/app_data/Obsidian/0_Todo/$name_date
+    restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
 }
 
 syncj() {
-    restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data && touch /home/cs/app/app_data/Obsidian/0_Todo/$name_date
+    restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
 }
 
 
