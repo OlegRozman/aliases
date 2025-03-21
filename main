@@ -159,6 +159,16 @@ alias tordel='trash-put ~/download/*.torrent*'
 
 # ................................ rename
 
+rname_date () {
+	for file in *; do
+    		if [[ -f "$file" ]]; then
+        		newname=$(date -r "$file" +"%Y-%m-%d_%H-%M-%S")
+        		mv "$file" "${newname}.${file##*.}"
+    		fi
+	done
+}
+
+
 trname () { echo $1 | tr ' ' '_' | wl-copy }
 
 alias name='rename -av " " "_" * ; rename -av "__" "_" *'
