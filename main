@@ -316,23 +316,20 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 
 # ................................ sync
 
-alias repo_h_do='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
-alias repo_j_do='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
+alias s_bkp='sh ~/sys/script/app-bkp.sh'
 
-alias bkp_app='sh ~/sys/script/app-bkp.sh'
+s_h() { restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
 
-alias log_bkp_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_h.log'
-alias log_bkp_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_j.log'
+s_j() { restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
 
+alias s_repo_h='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
+alias s_repo_j='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
 
-synch() {
-    restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
-}
+alias s_log_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_h.log'
+alias s_log_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_j.log'
 
-syncj() {
-    restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
-}
-
+alias s_diff_pwd='diff -r --exclude=.obsidian --exclude=.trash . ~/app/app_data/Obsidian'
+alias s_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/snapshots/latest/home/cs/app/app_data/Obsidian ~/app/app_data/Obsidian'
 
 # ................................ home
 
