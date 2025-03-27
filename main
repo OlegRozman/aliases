@@ -104,7 +104,7 @@ cash_cl() { sudo sync && sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches' }  # мо
 alias sp='systemctl suspend'
 alias rt='systemctl reboot'
 alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
-
+alias fontfc='sudo fc-cache -fv'
 
 # ................................ files 
 
