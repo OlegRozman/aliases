@@ -314,15 +314,15 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 # ................................   BACKUP   ................................ 
 
 
-# ................................ sync
+# ................................ sync Obsidian
 
-alias s_bkp='sh ~/sys/script/app-bkp.sh'
+alias o_bkp='sh ~/sys/script/app-bkp.sh'
 
-s_h() { restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
+o_h() { restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
 
-s_j() { restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
+o_j() { restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
 
-snc() {
+o_sync() {
     if [ -f "~/sys/script/home.flag" ]; then   # home.flag - флага хоста
        restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
     elif [ -f "~/sys/script/job.flag" ]; then
@@ -330,20 +330,20 @@ snc() {
     fi
 }
 
-s_snap() {
+o_snap() {
     echo && echo  "      HOME repo" && restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd snapshots | tail -14 &&
     echo && echo "\n      JOB repo" && restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd snapshots | tail -14
 }
 
 
-alias s_repo_h='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
-alias s_repo_j='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
+alias o_repo_h='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
+alias o_repo_j='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
 
-alias s_log_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_h.log'
-alias s_log_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_j.log'
+alias o_log_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_h.log'
+alias o_log_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_j.log'
 
-alias s_diff_pwd='diff -r --exclude=.obsidian --exclude=.trash . ~/app/app_data/Obsidian'
-alias s_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/snapshots/latest/home/cs/app/app_data/Obsidian ~/app/app_data/Obsidian'
+alias o_diff_pwd='diff -r --exclude=.obsidian --exclude=.trash . ~/app/app_data/Obsidian'
+alias o_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/snapshots/latest/home/cs/app/app_data/Obsidian ~/app/app_data/Obsidian'
 
 # ................................ home
 
