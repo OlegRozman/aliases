@@ -322,6 +322,20 @@ s_h() { restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-r
 
 s_j() { restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
 
+snc() {
+    if [ -f "~/sys/script/home.flag" ]; then   # home.flag - флага хоста
+       restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
+    elif [ -f "~/sys/script/job.flag" ]; then
+       restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
+    fi
+}
+
+s_snap() {
+    echo && echo  "      HOME repo" && restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd snapshots | tail -14 &&
+    echo && echo "\n      JOB repo" && restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd snapshots | tail -14
+}
+
+
 alias s_repo_h='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
 alias s_repo_j='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
 
