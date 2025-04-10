@@ -315,32 +315,30 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 
 
 # ................................ sync Obsidian
+dir_script=/home/cs/sys/script
+dir_bkp=/mnt/data/y-dk/dbs/bkp
 
-alias o_bkp='sh ~/sys/script/app-bkp.sh'
-
-o_h() { restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
-
-o_j() { restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data }
+alias o_bkp='sh $dir_script/app-bkp.sh'
 
 o_sync() {
-    if [ -f "~/sys/script/home.flag" ]; then   # home.flag - флага хоста
-       restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
-    elif [ -f "~/sys/script/job.flag" ]; then
-       restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file ~/sys/script/app-exclude.lst --delete --target /home/cs/app/app_data
+    if [ -f "$dir_script/home.flag" ]; then   # home.flag - флага хоста
+       restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file $dir_script/app-exclude.lst --delete --target /home/cs/app/app_data
+    elif [ -f "$dir_script/job.flag" ]; then
+       restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd restore latest:/home/cs/app/app_data --exclude-file $dir_script/app-exclude.lst --delete --target /home/cs/app/app_data
     fi
 }
 
 o_snap() {
-    echo && echo  "      HOME repo" && restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd snapshots | tail -14 &&
-    echo && echo "\n      JOB repo" && restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd snapshots | tail -14
+    echo && echo  "      HOME repo" && restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd snapshots | tail -14 &&
+    echo && echo "\n      JOB repo" && restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd snapshots | tail -14
 }
 
 
-alias o_repo_h='restic -r /mnt/data/y-dk/dbs/bkp/apph --password-file ~/sys/script/app-repo.pwd'
-alias o_repo_j='restic -r /mnt/data/y-dk/dbs/bkp/appj --password-file ~/sys/script/app-repo.pwd'
+alias o_repo_h='restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd'
+alias o_repo_j='restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd'
 
-alias o_log_h='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_h.log'
-alias o_log_j='less +G /mnt/data/y-dk/dbs/bkp/bkp_app_j.log'
+alias o_log_h='less +G $dir_bkp/bkp_app_h.log'
+alias o_log_j='less +G $dir_bkp/bkp_app_j.log'
 
 alias o_diff_pwd='diff -r --exclude=.obsidian --exclude=.trash . ~/app/app_data/Obsidian'
 alias o_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/snapshots/latest/home/cs/app/app_data/Obsidian ~/app/app_data/Obsidian'
@@ -350,24 +348,22 @@ alias o_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/s
 bp_torrent=/mnt/ext2Tb/bp_torrent
 bp_data=/mnt/ext2Tb/bp_data
 
-alias restic_data='restic -r $bp_data/data_repo --password-file ~/sys/script/home-bkp-repo.pwd --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
+alias restic_data='restic -r $bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
 alias rsync_torrent='rsync -avh --delete --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
 alias rsync_vmh='rsync -avh --delete --log-file=/mnt/ext2Tb/bp_vm/rsync.log /mnt/vm/vm/ /mnt/ext2Tb/bp_vm/'
 
 # snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_data_do='restic -r $bp_data/data_repo --password-file ~/sys/script/home-bkp-repo.pwd'
-alias restic_data_forget='restic -r /$bp_data/data_repo --password-file ~/sys/script/home-bkp-repo.pwd forget --keep-last 20 --prune'
+alias restic_data_do='restic -r $bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd'
+alias restic_data_forget='restic -r /$bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd forget --keep-last 20 --prune'
 
 
 # ................................ job
 
 # bp_job=/run/media/cs/orico-256/bp
 
-bp_job=/mnt/data/y-dk/dbs/bkp/job
-
 restic_job() {
    yandex-disk stop
-   restic -r $bp_job --password-file ~/sys/script/app-repo.pwd --verbose backup --files-from $bp_job/list_bp.txt --exclude-caches --exclude-file $bp_job/excludes.txt
+   restic -r $dir_bkp/job --password-file $dir_script/app-repo.pwd --verbose backup --files-from $dir_bkp/job/list_bp.txt --exclude-caches --exclude-file $dir_bkp/job/excludes.txt
    yandex-disk start
 }
 
@@ -375,8 +371,8 @@ restic_job() {
 #   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
 
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_job_do='restic -r $bp_job --password-file ~/sys/script/app-repo.pwd'
-alias restic_job_forget='restic -r $bp_job --password-file ~/sys/script/app-repo.pwd forget --keep-last 20 --prune'
+alias restic_job_do='restic -r $dir_bkp/job --password-file $dir_script/app-repo.pwd'
+alias restic_job_forget='restic -r $dir_bkp/job --password-file $dir_script/app-repo.pwd forget --keep-last 20 --prune'
 
 
 
