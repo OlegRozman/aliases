@@ -343,6 +343,19 @@ alias o_log_j='less +G $dir_bkp/bkp_app_j.log'
 alias o_diff_pwd='diff -r --exclude=.obsidian --exclude=.trash . ~/app/app_data/Obsidian'
 alias o_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/snapshots/latest/home/cs/app/app_data/Obsidian ~/app/app_data/Obsidian'
 
+# показывает последние измененные. Каталог (по умолчанию текущий)
+o_modif() {
+    DIR="${1:-.}"
+    
+    find "$DIR" -type f -printf '%T@ %p\n' \
+    | sort -nr \
+    | head -n 20 \
+    | while read -r timestamp path; do
+        human_time=$(date -d @"$timestamp" '+%Y-%m-%d %H:%M:%S')
+        echo "$human_time  $path"
+    done
+}
+
 # ................................ home
 
 bp_torrent=/mnt/ext2Tb/bp_torrent
