@@ -318,7 +318,7 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 dir_script=/home/cs/sys/script
 dir_bkp=/mnt/data/y-dk/dbs/bkp
 
-alias o_bkp='sh $dir_script/app-bkp.sh'
+alias bkp_o='sh $dir_script/app-bkp.sh'
 
 o_sync() {
     if [ -f "$dir_script/home.flag" ]; then   # home.flag - флага хоста
