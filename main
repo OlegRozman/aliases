@@ -340,8 +340,8 @@ alias o_repo_j='restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd
 alias o_log_h='less +G $dir_bkp/bkp_app_h.log'
 alias o_log_j='less +G $dir_bkp/bkp_app_j.log'
 
-alias o_diff_pwd='diff -r --exclude=.obsidian --exclude=.trash . ~/app/app_data/Obsidian'
-alias o_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/snapshots/latest/home/cs/app/app_data/Obsidian ~/app/app_data/Obsidian'
+alias o_diff_pwd='diff -r --exclude=.obsidian --exclude=.trash . ~/app/app_data/org/roam'
+alias o_diff_latest='diff -r --exclude=.obsidian --exclude=.trash ~/sys/restic/snapshots/latest/home/cs/app/app_data/Obsidian ~/app/app_data/org/roam'
 
 # find . -mtime 0 - показать измененые файлы за последние сутки
 
