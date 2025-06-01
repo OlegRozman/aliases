@@ -104,7 +104,7 @@ ff_css_480_all() {
 # определение кодека, чтобы установить нужное **расширение** имени файла.
 # ffmpeg -i video.mp4
 # $1 - input_video.mp4 
-ff_audio_ext() { ffmpeg -i $1 -vn -acodec copy ./conv/"$file"; }
+ff_audio_ext() { ffmpeg -i $1 -vn -acodec copy $1.aac; }
 
 # конвертация wav to aac
 ff_wav_to_aac() { ffmpeg -i $1 -c:a aac -b:a 192k $2 }
