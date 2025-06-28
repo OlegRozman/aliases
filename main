@@ -257,11 +257,11 @@ alias ykr='yandex-disk stop && yandex-disk start'
 
 # ................................ ls
 
-alias l='exa -F'
-alias la='exa -F -a'
-alias ll='exa -F -lh'
-alias lah='exa -F -lah'
-alias tre='exa -T'
+alias l='ls -F'
+alias la='ls -F -a'
+alias ll='ls -F -lh'
+alias lah='ls -F -lah'
+alias tre='ls -T'
 
 
 # ................................ history
