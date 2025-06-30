@@ -316,7 +316,7 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 
 # ................................ sync Obsidian
 dir_script=/home/cs/sys/script
-dir_bkp=/mnt/data/y-dk/dbs/bkp
+dir_bkp=/home/cs/Dropbox/bkp
 
 alias bkp_o='sh $dir_script/app-bkp.sh'
 
