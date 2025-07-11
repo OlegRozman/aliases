@@ -361,11 +361,11 @@ alias restic_data_forget='restic -r /$bp_data/data_repo --password-file $dir_scr
 
 # ................................ job
 
-# bp_job=/run/media/cs/orico-256/bp
+diryk_bkp=/mnt/data/y-dk/dbs/bkp
 
 restic_job() {
    yandex-disk stop
-   restic -r $dir_bkp/job --password-file $dir_script/app-repo.pwd --verbose backup --files-from $dir_bkp/job/list_bp.txt --exclude-caches --exclude-file $dir_bkp/job/excludes.txt
+   restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd --verbose backup --files-from $diryk_bkp/job/list_bp.txt --exclude-caches --exclude-file $diryk_bkp/job/excludes.txt
    yandex-disk start
 }
 
@@ -373,8 +373,8 @@ restic_job() {
 #   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
 
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_job_do='restic -r $dir_bkp/job --password-file $dir_script/app-repo.pwd'
-alias restic_job_forget='restic -r $dir_bkp/job --password-file $dir_script/app-repo.pwd forget --keep-last 20 --prune'
+alias restic_job_do='restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd'
+alias restic_job_forget='restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd forget --keep-last 20 --prune'
 
 
 
