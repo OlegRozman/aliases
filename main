@@ -106,6 +106,8 @@ alias rt='systemctl reboot'
 alias eps='epson-printer-utility'  # утилита, показывающая уровень чернил и пр.
 alias fontfc='sudo fc-cache -fv'   # установка шрифта (добавить в кэш)
 
+alias lsblk='lsblk -o NAME,START,SIZE,TYPE,FSTYPE,ALIGNMENT,MOUNTPOINTS' # ALIGNMENT выравниевание (0 - есть выравнивание)
+
 # ................................ files 
 
 mkdir_gen () {
