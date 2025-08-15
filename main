@@ -331,9 +331,17 @@ ync() {
 }
 
 nap() {
-    echo && echo  "      DROPBOX status\n" && dropbox status && echo && echo "------------------------------------------------"   
-    echo && echo  "      HOME repo" && restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd snapshots | tail -14 &&
-    echo && echo "\n      JOB repo" && restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd snapshots | tail -14
+    echo &&
+    if pgrep -x dropbox >/dev/null; then
+        echo "      DROPBOX STATUS" && echo &&      
+        dropbox status
+    else
+        echo "DROPBOX НЕ ЗАПУЩЕН. ЗАПУСКАЮ..."
+        dropbox start
+    fi &&
+    echo && echo "------------------------------------------------" && 
+    echo && echo  "      HOME REPO" && restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd snapshots | tail -14 &&
+    echo && echo "\n      JOB REPO" && restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd snapshots | tail -14
 }
 
 
