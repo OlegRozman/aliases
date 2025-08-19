@@ -285,6 +285,8 @@ alias pipup='pip install --user -U $1'
 
 alias cdoleg='cd /run/user/1000/gvfs/smb-share:server=172.18.18.3,share=share/Distribu/_Upload_/Oleg'
 
+alias stoppcscd='sudo systemctl stop pcscd.socket && sudo systemctl stop pcscd' # остановка демона смарт-карт
+
 
 # ................................   NET   ................................ 
 
