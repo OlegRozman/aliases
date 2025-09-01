@@ -99,7 +99,7 @@ cer_rename () {
 
 # ................................   СИСТЕМА   ................................ 
 
-proxy_for_ups () { export all_proxy="socks5://127.0.0.1:2080" }
+pfu () { export all_proxy="socks5://127.0.0.1:2080" } # proxy for up system
 jl_data() { journalctl --since "$1" }  # format "2012-10-30 18:17:16", можно дату без времени
 cash_cl() { sudo sync && sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches' }  # может зависнуть - sync наверняка не может сбросить данные кеша на носитель
 alias sp='systemctl suspend'
