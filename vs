@@ -163,14 +163,6 @@ y7f() { link=$(wl-paste);
 	yt-dlp -S "res:720" $link && mv "$filename" ~/download/"$new_title.$ext" 
 }
 
-y7f_nopx() { link=$(wl-paste);
-	title="$(yt-dlp --print title $link)";
-	filename="$(yt-dlp --print filename $link)";
-	ext="$(yt-dlp --print ext $link)";
-	echo "\n\n$title\n\n$filename\n\n$ext\n\n";
-	new_title=$(echo "$title" | sed 's/[^а-яА-Яa-zA-Z0-9]/_/g' | sed 's/__/_/g' | sed 's/_$//g');
-	yt-dlp -S "res:720" $link && mv "$filename" ~/download/"$new_title.$ext" 
-}
 
 y4f() { link=$(wl-paste);
 	title="$(yt-dlp --print title $link)";
