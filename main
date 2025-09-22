@@ -366,23 +366,24 @@ alias o_diff_latest='diff -r ~/sys/restic/snapshots/latest/home/cs/app/app_data/
 bp_torrent=/mnt/ext2Tb/bp_torrent
 bp_data=/mnt/ext2Tb/bp_data
 
-alias restic_data='restic -r $bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
-alias rsync_torrent='rsync -avh --delete --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
-rsync_vmh() { 
+alias bp_data='restic -r $bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
+alias bp_torr='rsync -avh --delete --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
+
+bp_vm() { 
     rm -rf /mnt/ext2Tb/bp_vm/* &&
     rsync -avh --delete --log-file=/mnt/ext2Tb/bp_vm/rsync.log /mnt/vm/vm/ /mnt/ext2Tb/bp_vm/
 }
 
 # snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_data_do='restic -r $bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd'
-alias restic_data_forget='restic -r /$bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd forget --keep-last 20 --prune'
+alias do_data='restic -r $bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd'
+alias foget_data='restic -r /$bp_data/data_repo --password-file $dir_script/home-bkp-repo.pwd forget --keep-last 20 --prune'
 
 
 # ................................ job
 
 diryk_bkp=/mnt/data/y-dk/dbs/bkp
 
-restic_job() {
+bk_job() {
    yandex-disk stop
    restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd --verbose backup --files-from $diryk_bkp/job/list_bp.txt --exclude-caches --exclude-file $diryk_bkp/job/excludes.txt
    yandex-disk start
@@ -392,8 +393,8 @@ restic_job() {
 #   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
 
 # snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
-alias restic_job_do='restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd'
-alias restic_job_forget='restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd forget --keep-last 20 --prune'
+alias do_job='restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd'
+alias forget_job='restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd forget --keep-last 20 --prune'
 
 
 
