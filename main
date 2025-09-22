@@ -383,7 +383,7 @@ alias foget_data='restic -r /$bp_data/data_repo --password-file $dir_script/home
 
 diryk_bkp=/mnt/data/y-dk/dbs/bkp
 
-bk_job() {
+bp_job() {
    yandex-disk stop
    restic -r $diryk_bkp/job --password-file $dir_script/app-repo.pwd --verbose backup --files-from $diryk_bkp/job/list_bp.txt --exclude-caches --exclude-file $diryk_bkp/job/excludes.txt
    yandex-disk start
