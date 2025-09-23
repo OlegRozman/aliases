@@ -325,7 +325,7 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 dir_script=/home/cs/sys/script
 dir_bkp=/home/cs/Dropbox/bkp
 
-alias bkp_o='sh $dir_script/app-bkp.sh'
+alias bp_kb='sh $dir_script/app-bkp.sh'
 
 ync() {
     if [ -f "$dir_script/home.flag" ]; then   # home.flag - флага хоста
@@ -350,14 +350,14 @@ nap() {
 }
 
 
-alias o_repo_h='restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd'
-alias o_repo_j='restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd'
+alias repo_h='restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd'
+alias repo_j='restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd'
 
-alias o_log_h='less +G $dir_bkp/bkp_app_h.log'
-alias o_log_j='less +G $dir_bkp/bkp_app_j.log'
+alias log_h='less +G $dir_bkp/bkp_app_h.log'
+alias log_j='less +G $dir_bkp/bkp_app_j.log'
 
-alias o_diff_pwd='diff -r . ~/app/app_data/org/roam'
-alias o_diff_latest='diff -r ~/sys/restic/snapshots/latest/home/cs/app/app_data/org/roam ~/app/app_data/org/roam'
+alias diff_pwd='diff -r . ~/app/app_data/org/roam'
+alias diff_latest='diff -r ~/sys/restic/snapshots/latest/home/cs/app/app_data/org/roam ~/app/app_data/org/roam'
 
 # find . -mtime 0 - показать измененые файлы за последние сутки
 
