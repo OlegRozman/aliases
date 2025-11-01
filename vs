@@ -55,7 +55,9 @@ lumix() {
 
 # ..........................  FFMPEG  ...........................
 
-ff_i() { for file in *; do
+alias ff_i='ffprobe -hide_banner -i $1'
+
+ff_i_all() { for file in *; do
 		# Проверяем, существует ли файл
 		if [[ -f "$file" ]]; then
 			echo "Файл: $file"
