@@ -346,8 +346,10 @@ nap() {
         dropbox start
     fi &&
     echo && echo "------------------------------------------------" && 
-    echo && echo  "      HOME REPO" && restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd snapshots | tail -14 &&
-    echo && echo "\n      JOB REPO" && restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd snapshots | tail -14
+    echo && echo  "      HOME REPO" && \
+    restic -r $dir_bkp/apph --password-file $dir_script/app-repo.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p' &&
+    echo && echo "\n      JOB REPO" && \
+    restic -r $dir_bkp/appj --password-file $dir_script/app-repo.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p'
 }
 
 
