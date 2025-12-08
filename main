@@ -100,7 +100,17 @@ cer_rename () {
 
 # ................................   СИСТЕМА   ................................ 
 
-pfu () { export {http,https,ftp,all}_proxy="socks5://127.0.0.1:2080" {HTTP,HTTPS,FTP,ALL}_PROXY="socks5://127.0.0.1:2080" } # proxy for up system
+pfu () {
+    export http_proxy="socks5://127.0.0.1:2080" \
+           https_proxy="socks5://127.0.0.1:2080" \
+           ftp_proxy="socks5://127.0.0.1:2080" \
+           all_proxy="socks5://127.0.0.1:2080" \
+           HTTP_PROXY="socks5://127.0.0.1:2080" \
+           HTTPS_PROXY="socks5://127.0.0.1:2080" \
+           FTP_PROXY="socks5://127.0.0.1:2080" \
+           ALL_PROXY="socks5://127.0.0.1:2080"
+}
+
 jl_data() { journalctl --since "$1" }  # format "2012-10-30 18:17:16", можно дату без времени
 cash_cl() { sudo sync && sudo sh -c 'echo 3 >/proc/sys/vm/drop_caches' }  # может зависнуть - sync наверняка не может сбросить данные кеша на носитель
 alias sp='systemctl suspend'
