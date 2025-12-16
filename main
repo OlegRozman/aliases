@@ -99,16 +99,25 @@ cer_rename () {
 
 
 # ................................   СИСТЕМА   ................................ 
-
 pfu () {
-    export http_proxy="socks5://127.0.0.1:2080" \
-           https_proxy="socks5://127.0.0.1:2080" \
-           ftp_proxy="socks5://127.0.0.1:2080" \
-           all_proxy="socks5://127.0.0.1:2080" \
-           HTTP_PROXY="socks5://127.0.0.1:2080" \
-           HTTPS_PROXY="socks5://127.0.0.1:2080" \
-           FTP_PROXY="socks5://127.0.0.1:2080" \
-           ALL_PROXY="socks5://127.0.0.1:2080"
+    PROXY_ADDR="socks5://127.0.0.1:2080"
+    NO_PROXY="localhost,127.0.0.1,::1"
+
+    echo "➡️ Активирован локальный прокси SOCKS5 на $PROXY_ADDR"
+
+    # Основные переменные для всего трафика
+    export all_proxy="$PROXY_ADDR"
+    export ALL_PROXY="$PROXY_ADDR"
+
+    # Также установим HTTP/HTTPS для совместимости с некоторыми старыми утилитами
+    export http_proxy="$PROXY_ADDR"
+    export HTTP_PROXY="$PROXY_ADDR"
+    export https_proxy="$PROXY_ADDR"
+    export HTTPS_PROXY="$PROXY_ADDR"
+
+    # Исключения
+    export no_proxy="$NO_PROXY"
+    export NO_PROXY="$NO_PROXY"
 }
 
 jl_data() { journalctl --since "$1" }  # format "2012-10-30 18:17:16", можно дату без времени
