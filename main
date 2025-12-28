@@ -392,7 +392,7 @@ alias bp_data='restic -r $bp_data/data_repo --password-file $dir_script/home-bkp
 alias bp_torr='rsync -avh --delete --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
 
 bp_vm() { 
-    rm -rf /mnt/ext_1Tb_25/bp_vm/* &&
+    # rm -rf /mnt/ext_1Tb_25/bp_vm/* &&
     rsync -avh --delete --log-file=/mnt/ext_1Tb_25b/bp_vm/rsync.log /mnt/vm/vm/ /mnt/ext_1Tb_25/bp_vm/
 }
 
