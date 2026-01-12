@@ -35,6 +35,13 @@ picrotatef() { mkdir rotate;
 
 alias pdftojpg='pdftocairo -jpeg $1'   # $1 - имя pdf файла
 
+pdfresize() {
+	mkdir -p src && mv *.pdf src && cd src && for f in *.pdf; do 
+		gs -sDEVICE=pdfwrite -dCompatibilityLevel=1.4 -dPDFSETTINGS=/ebook \
+           -dNOPAUSE -dQUIET -dBATCH \
+		   -sOutputFile="../$f" "$f"
+	done
+}
 
 #........................... Lumix ..............................
 # для фото и видео с камеры Lumix: дату в имя плюс конвертация видео
