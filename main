@@ -161,6 +161,7 @@ alias rlist='sudo dnf repolist'
 # ................................ app others
 
 alias vi='nvim'
+alias yb='yandex-browser-stable --proxy-server="172.23.99.80:3128" --proxy-bypass-list="172.*" > /dev/null 2>&1 & disown'
 
 
 # ................................ systemd
