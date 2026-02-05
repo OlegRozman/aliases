@@ -250,10 +250,10 @@ rname_find () {
 # ................................ config
 
 alias alg='alias | grep $1'
-alias all='bat ~/.aliases/main'
-alias ala='bat ~/.aliases/arc'
-alias alv='bat ~/.aliases/vs'
-alias ale='bat ~/.aliases/edit'
+alias all='less ~/.aliases/main'
+alias ala='less ~/.aliases/arc'
+alias alv='less ~/.aliases/vs'
+alias ale='less ~/.aliases/edit'
 alias alled='nvim ~/.aliases/main' 
 alias alaed='nvim ~/.aliases/arc' 
 alias alved='nvim ~/.aliases/vs' 
