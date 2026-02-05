@@ -149,15 +149,6 @@ alias ptoc='pwd | wl-copy'
 alias listfpak='flatpak list --app'
 
 
-# ................................ dnf
-
-alias ups='sudo dnf update'                    
-alias ill='sudo dnf install'
-rmv () { sudo dnf remove $1 && sudo dnf autoremove }
-alias ilist='dnf list --installed | grep'
-alias rlist='sudo dnf repolist'
-
-
 # ................................ app others
 
 alias vi='nvim'
