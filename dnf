@@ -4,5 +4,3 @@ rmv () { sudo dnf remove $1 && sudo dnf autoremove }
 alias ilist='dnf list --installed | grep'
 alias rlist='sudo dnf repolist'
 
-alias push_dnf='cd ~/.aliases_dnf; git diff; read; git add .; git commit -m "comment"; git push; cd'
-
