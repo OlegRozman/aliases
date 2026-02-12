@@ -1,5 +1,7 @@
 #!/bin/sh
 
+admin_flash_zip() { zip -r /mnt/data/sys/bkp/admin_flash.zip . -x "KES-Up_*.zip" ".Trash-*" }  # исполнять в текущей директории флешки
+
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
 tgz() { tar -czvf $1.tar.gz $1 }
 etgz() { tar -xzvf $1 }

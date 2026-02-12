@@ -4,7 +4,5 @@ alias ups='sudo apt update && sudo apt upgrade'
 alias ill='sudo apt install'
 rmv () { sudo apt remove $1 && sudo apt autoremove }
 alias ilist='apt list --installed | grep'
-alias rlist='sudo apt repolist'
+alias rlist='cat /etc/apt/sources.list && ls /etc/apt/sources.list.d/*.sources | cat'
 
-
-alias push_apt='cd ~/.aliases_apt; git diff; read; git add .; git commit -m "comment"; git push; cd'
