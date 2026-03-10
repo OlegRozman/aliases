@@ -4,5 +4,16 @@ alias ups='sudo apt update && sudo apt upgrade'
 alias ill='sudo apt install'
 rmv () { sudo apt remove $1 && sudo apt autoremove }
 alias ilist='apt list --installed | grep'
-alias rlist='cat /etc/apt/sources.list && ls /etc/apt/sources.list.d/*.sources | cat'
+alias repolist='cat /etc/apt/sources.list && ls /etc/apt/sources.list.d/*.sources | cat'
+
+# sudo apt purge package_name        # Remove package with config	
+# apt search keyword                 # Search for a package	
+# apt show package_name              # Show package details	
+# apt list --installed               # List installed packages	
+# apt list --upgradable              # List upgradable packages	
+# sudo apt autoremove                # Remove unused dependencies	
+# apt depends package_name           # Check package dependencies	
+# sudo apt install -y package_name   # Skip confirmation prompt	
+# sudo apt edit-sources              # Edit repository sources	
+# sudo apt full-upgrade              # Full system upgrade	
 
