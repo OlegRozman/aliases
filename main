@@ -166,6 +166,9 @@ alias srvss='systemctl status backup_joplin.service'
 
 alias csg='cat /etc/group | grep cs'  # в каких группах состоит пользователь cs
 
+# список пользователей
+usrs () { getent passwd | awk -F: '$3 >= 1000 && $1 != "nobody"' | sort -t: -k3 -n }
+
 
 # ................................ корзина
 
