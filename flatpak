@@ -1,0 +1,23 @@
+
+# flatpak help	See all available Flatpak commands
+# flatpak info <application-id>	Show information about an installed Flatpak application
+# flatpak permissions	View global Flatpak permissions
+# flatpak permission-show <application-id>	View specific app permissions
+# flatpak history	  # View Flatpak transaction history (installs, updates, removals)
+# flatpak list        # все
+# flatpak list --app  # пользовательские приложения
+# flatpak run org.mozilla.Thunderbird
+# flatpak install flathub <application-id>	# Install an application from the Flathub repository
+# flatpak uninstall ...
+# flatpak uninstall --unused   # Uninstall unused runtimes and clean up
+# flatpak remotes	  # List all configured Flatpak repositories (remotes)
+# flatpak remote-add <remote-name> <repository-url>	Add a new Flatpak remote repository
+# flatpak update      # Update all installed Flatpak applications
+# flatpak update <application-id>	# Update a specific Flatpak application
+# flatpak search <search-term>	    # Search for Flatpak applications in configured repositories
+# flatpak override <application-id> --filesystem=home	Set permissions or override default sandboxing behavior
+# flatpak override --reset <application-id>	Reset all overrides for a Flatpak application
+# flatpak permission-reset <application-id>	Reset permissions of a Flatpak application
+# flatpak repair	Check and fix the Flatpak installation (e.g., missing files)
+# flatpak create-usb <remote-name> <mount-point>	Copy apps/runtimes to a USB for offline installation
+
