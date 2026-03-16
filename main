@@ -300,7 +300,7 @@ alias hg='history 0 | grep $1'
 alias py='python3'
 # pip --version; ups; pip list; обновить пакет $1
 alias pipup='pip install --user -U $1'
-
+alias venv='source ~/sys/venv/bin/activate'
 
 # ................................ job
 
