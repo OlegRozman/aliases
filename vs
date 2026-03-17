@@ -231,7 +231,7 @@ alias yf='yt-dlp $(wl-paste) -f $1' # качать формат на выбор 
 
 alias y7='yt-dlp -S "res:720" $(wl-paste)'
 alias y4='yt-dlp -S "res:480" $(wl-paste)'
-alias y10='yt-dlp -S "res:1080" $(wl-paste)'
+y10() { yt-dlp -S "res:1080" $(wl-paste) }
 alias y7p='yt-dlp -S "res:720" $1'
 alias ydlp='~/.scripts/ydlp.sh'
 
