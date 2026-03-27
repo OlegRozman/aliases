@@ -1,7 +1,12 @@
 #!/bin/sh
 
 admin_flash_zip() { zip -r /mnt/data/sys/bkp/admin_flash.zip . -x "KES-Up_*.zip" ".Trash-*/*" }  # исполнять в текущей директории флешки
-sys_bp() { sudo tar -caf /mnt/vm/timeshift.tar.zst /mnt/backup/timeshift }
+
+
+# sys_bp() { rm -f timeshift.tar.zst && sudo tar -caf /media/cs/flash/timeshift.tar.zst /mnt/backup/timeshift }
+sys_bp() { [ -f osj_bp.tar.zst.gpg ] &&
+	       rm osj_bp.tar.zst.gpg &&
+		   sudo tar -cf - /mnt/backup/timeshift | zstd | gpg --passphrase-file ~/sys/script/s3_bp.key -c -o osj_bp.tar.zst.gpg  }
 
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
 tgz() { tar -czvf $1.tar.gz $1 }
