@@ -356,10 +356,9 @@ ync() {
 }
 
 nap() { source $script_path/s3_bp.key
-		echo && echo "------------------------------------------------" && 
 		echo && echo  "      HOME REPO" && 
 		restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p' && 
-		echo && echo "\n      JOB REPO" &&
+		echo && echo "      JOB REPO" &&
 		restic -r  $bp_app_path/job --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p'
 }
 	
