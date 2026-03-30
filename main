@@ -344,7 +344,7 @@ alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
 script_path=/home/cs/sys/script
 bp_app_path=s3:https://s3.regru.cloud/backup/backup/app
 
-alias bp_kb='sh $script_path/s3_app.sh'
+alias bp_kb='bash $script_path/s3_app.sh'
 
 ync() {
 	source $script_path/s3_bp.key
