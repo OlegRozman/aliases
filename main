@@ -1,4 +1,3 @@
-#!/bin/sh
 
 # cd ~/.aliases
 # git pull --rebase
@@ -246,16 +245,8 @@ rname_find () {
 alias alg='alias | grep $1'
 alias all='less ~/.aliases/main'
 alias ala='less ~/.aliases/arc'
-alias alv='less ~/.aliases/vs'
-alias ale='less ~/.aliases/edit'
-alias alapt='less ~/.aliases/apt'
-alias aldnf='less ~/.aliases/dnf'
 alias alled='nvim ~/.aliases/main' 
 alias alaed='nvim ~/.aliases/arc' 
-alias alved='nvim ~/.aliases/vs' 
-alias aleed='nvim ~/.aliases/edit'
-alias alapted='nvim ~/.aliases/apt'
-alias aldnfed='nvim ~/.aliases/dnf'
 alias src='source ~/.zshrc'
 
 # ................................ Size
@@ -323,7 +314,6 @@ alias sited='wget --mirror -p --convert-links -P . $1'
 alias flush='sudo systemd-resolve --flush-caches'
 
 
-
 # ................................   КОНВЕРТАЦИИ   ................................ 
 
 
@@ -336,78 +326,6 @@ winutf() { mkdir conv; for f in *.txt; do iconv -f WINDOWS-1251 -t UTF-8 -o conv
 alias fnametoutf='for file in *; do mv "$file" "`echo $file | iconv -f WINDOWS-1251 -t UTF-8`"; done'
 
 alias mdtoepub='pandoc -f markdown -t epub nerd_.txt -o nerd.epub'
-
-# ................................   BACKUP   ................................ 
-
-
-# ................................ sync KnowBase 
-script_path=/home/cs/sys/script
-bp_app_path=s3:https://s3.regru.cloud/backup/backup/app
-
-alias bp_kb='bash $script_path/s3_app.sh'
-
-ync() {
-	source $script_path/s3_bp.key
-    if [ -f "$script_path/home.flag" ]; then   # home.flag - флага хоста
-       restic -r $bp_app_path/job --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
-    elif [ -f "$script_path/job.flag" ]; then
-       restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
-    fi
-}
-
-nap() { source $script_path/s3_bp.key
-		echo && echo  "      HOME REPO" && 
-		restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p' && 
-		echo && echo "      JOB REPO" &&
-		restic -r  $bp_app_path/job --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p'
-}
-	
-
-alias repo_h='source $script_path/s3_bp.key && restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd'
-alias repo_j='source $script_path/s3_bp.key && restic -r $bp_app_path/job --password-file $script_path/s3_app.pwd'
-
-alias diff_pwd='diff -r . ~/app/org/roam'
-alias diff_latest='diff -r ~/sys/restic/snapshots/latest/home/cs/app/org/roam ~/app/org/roam'
-
-# alias log_h='less +G $bp_app_path/bkp_app_h.log'
-# alias log_j='less +G $bp_app_path/bkp_app_j.log'
-# find . -mtime 0 - показать измененые файлы за последние сутки
-
-# ................................ home
-
-bp_torrent=/mnt/ext2Tb/bp_torrent
-bp_data=/mnt/ext2Tb/bp_data
-
-alias bp_data='restic -r $bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
-alias bp_torr='rsync -avh --delete --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
-
-bp_vm() { 
-    # rm -rf /mnt/ext_1Tb_25/bp_vm/* &&
-    rsync -avh --delete --log-file=/mnt/ext_1Tb_25/bp_vm/rsync.log /mnt/vm/vm/ /mnt/ext_1Tb_25/bp_vm/
-}
-
-# snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
-alias do_data='restic -r $bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd'
-alias foget_data='restic -r /$bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd forget --keep-last 20 --prune'
-
-
-# ................................ job
-
-diryk_bkp=/mnt/data/y-dk/dbs/bkp
-
-bp_job() {
-   yandex-disk stop &&
-   restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd --verbose backup --files-from $diryk_bkp/job/list_bp.txt --exclude-caches --exclude-file $diryk_bkp/job/excludes.txt &&
-   yandex-disk start
-}
-
-# добавить /home/cs/.config/libvirt - сохранённые состояния машин
-#   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
-
-# snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
-alias do_job='restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd'
-alias forget_job='restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd forget --keep-last 20 --prune'
-
 
 
 # ................................   TLDR   ................................

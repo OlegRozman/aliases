@@ -1,3 +1,4 @@
+
 alias ups='sudo dnf update'                    
 alias ill='sudo dnf install'
 rmv () { sudo dnf remove $1 && sudo dnf autoremove }

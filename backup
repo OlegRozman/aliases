@@ -1,0 +1,116 @@
+
+
+# ................................  KNOWBASE  ................................ 
+
+script_path=/home/cs/sys/script
+bp_app_path=s3:https://s3.regru.cloud/backup/backup/app
+
+dir_bkp=/home/cs/Dropbox/bkp
+
+alias diff_pwd='diff -r . ~/app/org/roam'
+alias diff_latest='diff -r ~/sys/restic/snapshots/latest/home/cs/app/org/roam ~/app/org/roam'
+
+
+# ................................ S3
+
+alias bp_kb='bash $script_path/s3_app.sh'
+
+ync() {
+	source $script_path/s3_bp.key
+    if [ -f "$script_path/home.flag" ]; then   # home.flag - флага хоста
+       restic -r $bp_app_path/job --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
+    elif [ -f "$script_path/job.flag" ]; then
+       restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
+    fi
+}
+
+nap() { source $script_path/s3_bp.key
+		echo && echo  "      HOME REPO" && 
+		restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p' && 
+		echo && echo "      JOB REPO" &&
+		restic -r  $bp_app_path/job --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p'
+}
+	
+
+alias repo_h='source $script_path/s3_bp.key && restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd'
+alias repo_j='source $script_path/s3_bp.key && restic -r $bp_app_path/job --password-file $script_path/s3_app.pwd'
+
+
+# alias log_h='less +G $bp_app_path/bkp_app_h.log'
+# alias log_j='less +G $bp_app_path/bkp_app_j.log'
+# find . -mtime 0 - показать измененые файлы за последние сутки
+
+
+# ................................ Dropbox
+
+alias dx_bp_kb='sh $script_path/app-bkp.sh'
+
+dx_ync() {
+    if [ -f "$script_path/home.flag" ]; then   # home.flag - флага хоста
+       restic -r $dir_bkp/appj --password-file $script_path/app-repo.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
+    elif [ -f "$script_path/job.flag" ]; then
+       restic -r $dir_bkp/apph --password-file $script_path/app-repo.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
+    fi
+}
+
+dx_nap() {
+    echo &&
+    if pgrep -x dropbox >/dev/null; then
+        echo "      DROPBOX STATUS" && echo &&      
+        dropbox status
+    else
+        echo "DROPBOX НЕ ЗАПУЩЕН. ЗАПУСКАЮ..."
+        dropbox start
+    fi &&
+    echo && echo "------------------------------------------------" && 
+    echo && echo  "      HOME REPO" && \
+    restic -r $dir_bkp/apph --password-file $script_path/app-repo.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p' &&
+    echo && echo "\n      JOB REPO" && \
+    restic -r $dir_bkp/appj --password-file $script_path/app-repo.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p'
+}
+
+
+alias dx_repo_h='restic -r $dir_bkp/apph --password-file $script_path/app-repo.pwd'
+alias dx_repo_j='restic -r $dir_bkp/appj --password-file $script_path/app-repo.pwd'
+
+alias dx_log_h='less +G $dir_bkp/bkp_app_h.log'
+alias dx_log_j='less +G $dir_bkp/bkp_app_j.log'
+
+
+# find . -mtime 0 - показать измененые файлы за последние сутки
+
+
+# ................................  HOME  ................................ 
+
+bp_torrent=/mnt/ext2Tb/bp_torrent
+bp_data=/mnt/ext2Tb/bp_data
+
+alias bp_data='restic -r $bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd --verbose backup --files-from $bp_data/list_bp.txt --exclude-caches --exclude-file $bp_data/excludes.txt'
+alias bp_torr='rsync -avh --delete --log-file=$bp_torrent/rsync.log --exclude-from=$bp_torrent/excludes.txt /mnt/torrent $bp_torrent'
+
+bp_vm() { 
+    # rm -rf /mnt/ext_1Tb_25/bp_vm/* &&
+    rsync -avh --delete --log-file=/mnt/ext_1Tb_25/bp_vm/rsync.log /mnt/vm/vm/ /mnt/ext_1Tb_25/bp_vm/
+}
+
+# snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
+alias do_data='restic -r $bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd'
+alias foget_data='restic -r /$bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd forget --keep-last 20 --prune'
+
+# ................................  JOB  ................................... 
+
+diryk_bkp=/mnt/data/y-dk/dbs/bkp
+
+bp_job() {
+   yandex-disk stop &&
+   restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd --verbose backup --files-from $diryk_bkp/job/list_bp.txt --exclude-caches --exclude-file $diryk_bkp/job/excludes.txt &&
+   yandex-disk start
+}
+
+# добавить /home/cs/.config/libvirt - сохранённые состояния машин
+#   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
+
+# snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
+alias do_job='restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd'
+alias forget_job='restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd forget --keep-last 20 --prune'
+
