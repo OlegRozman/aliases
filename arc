@@ -7,7 +7,12 @@ sys_bp() { sys_bp_path=/mnt/data/y-dk/dbs/bkp/os
            if [ -f $sys_bp_path/osj_bp.tar.zst.gpg ]; then
            rm $sys_bp_path/osj_bp.tar.zst.gpg
 		   fi
-           sudo tar -cf - /mnt/backup/timeshift | zstd | gpg --passphrase-file ~/sys/script/s3_bp.key -c -o $sys_bp_path/osj_bp.tar.zst.gpg  }
+           sudo tar -cf - /mnt/backup/timeshift \
+           | zstd -T0 -5 \
+           | gpg --batch --yes --pinentry-mode loopback \
+                 --passphrase-file ~/sys/script/s3_bp.key \
+                 -c \
+                 -o $sys_bp_path/osj_bp.tar.zst.gpg }
 
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
 tgz() { tar -czvf $1.tar.gz $1 }
