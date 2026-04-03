@@ -3,9 +3,10 @@ admin_flash_zip() { zip -r /mnt/data/sys/bkp/admin_flash.zip . -x "KES-Up_*.zip"
 
 
 # sys_bp() { rm -f timeshift.tar.zst && sudo tar -caf /media/cs/flash/timeshift.tar.zst /mnt/backup/timeshift }
-sys_bp() { [ -f osj_bp.tar.zst.gpg ] &&
-           rm osj_bp.tar.zst.gpg &&
-           sudo tar -cf - /mnt/backup/timeshift | zstd | gpg --passphrase-file ~/sys/script/s3_bp.key -c -o /mnt/data/y-dk/dbs/bkp/os/osj_bp.tar.zst.gpg  }
+sys_bp() { sys_bp_path=/mnt/data/y-dk/dbs/bkp/os
+           [ -f $sys_bp_path/osj_bp.tar.zst.gpg ] &&
+           rm $sys_bp_path/osj_bp.tar.zst.gpg &&
+           sudo tar -cf - /mnt/backup/timeshift | zstd | gpg --passphrase-file ~/sys/script/s3_bp.key -c -o $sys_bp_path/osj_bp.tar.zst.gpg  }
 
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
 tgz() { tar -czvf $1.tar.gz $1 }
