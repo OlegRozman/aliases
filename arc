@@ -8,8 +8,8 @@ sys_bp() { sys_bp_path=/mnt/data/y-dk/dbs/bkp/os
            rm $sys_bp_path/osj_bp.tar.zst.gpg
 		   fi
            sudo tar -cf - /mnt/backup/timeshift \
-           | zstd -T0 -5 \
-           | gpg --batch --yes --pinentry-mode loopback \
+           | zstd -T0 -5 \                                   # T0 - все потоки использовать, 5 - сжатие (по-умолчанию 3, максимум 19)
+           | gpg --batch --yes --pinentry-mode loopback \    # эти параметры исключают появление окна с запросом пароля
                  --passphrase-file ~/sys/script/s3_bp.key \
                  -c \
                  -o $sys_bp_path/osj_bp.tar.zst.gpg }
