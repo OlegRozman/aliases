@@ -18,9 +18,9 @@ alias bp_kb='bash $script_path/s3_app.sh'
 ync() {
 	source $script_path/s3_bp.key
     if [ -f "$script_path/home.flag" ]; then   # home.flag - флага хоста
-       restic -r $bp_app_path/job --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
+       restic -r $bp_app_path/job --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app --verbose=1
     elif [ -f "$script_path/job.flag" ]; then
-       restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app
+       restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd restore latest:/home/cs/app --exclude-file $script_path/app-exclude.lst --delete --target /home/cs/app --verbose=1
     fi
 }
 
