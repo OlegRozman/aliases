@@ -143,11 +143,6 @@ mkdir_gen () {
 alias ptoc='pwd | wl-copy'
 
 
-# ................................ Flatpak
-
-alias listfpak='flatpak list --app'
-
-
 # ................................ app others
 
 alias vi='nvim'
