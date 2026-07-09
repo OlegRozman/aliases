@@ -119,26 +119,26 @@ ff_css_480() { if [ ! -d "conv" ]; then mkdir conv; fi; ffmpeg -i $1 -vf scale=-
 
 ff_css_v_all() { 
     mkdir conv
-    for file in ./*.mp4
+    for file in *
     do ffmpeg -i "$file" -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"
     done }
 
 ff_css_v_medium_all() { 
     mkdir conv
-    for file in ./*.mp4
+    for file in *
     do ffmpeg -i "$file" -c:v libx265 -preset medium -crf 23 -c:a copy ./conv/"$file"
     done }
 
 
 ff_css_720_all() { 
     mkdir conv
-    for file in ./*.mp4
+    for file in *
     do ffmpeg -i "$file" -vf scale=-2:720 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"
     done }
 
 ff_css_480_all() { 
     mkdir conv
-    for file in ./*.mp4;
+    for file in *
     do ffmpeg -i "$file" -vf scale=-2:480 -c:v libx265 -preset slow -crf 23 -c:a copy ./conv/"$file"
     done }
 
