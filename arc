@@ -1,16 +1,4 @@
 
-admin_flash_zip() { zip -r /mnt/data/sys/bkp/admin_flash.zip . -x "KES-Up_*.zip" ".Trash-*/*" }  # исполнять в текущей директории флешки
-
-
-# sys_bp() { rm -f timeshift.tar.zst && sudo tar -caf /media/cs/flash/timeshift.tar.zst /mnt/backup/timeshift }
-sys_bp() { sys_bp_path=/mnt/data/y-dk/dbs/bkp/os
-           if [ -f $sys_bp_path/osj_bp.tar.zst.gpg ]; then
-           rm $sys_bp_path/osj_bp.tar.zst.gpg
-		   fi
-           # T0 - все потоки использовать, 5 - сжатие (по-умолчанию 3, максимум 19)
-           # эти параметры исключают появление окна с запросом пароля
-           sudo tar -cf - /mnt/backup/timeshift | zstd -T0 -5 | gpg --batch --yes --pinentry-mode loopback --passphrase-file ~/sys/script/s3_bp.key -c -o $sys_bp_path/osj_bp.tar.zst.gpg }
-
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
 tgz() { tar -czvf $1.tar.gz $1 }
 etgz() { tar -xzvf $1 }
