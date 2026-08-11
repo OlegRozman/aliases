@@ -85,6 +85,7 @@ dx_nap() {
 alias dx_repo_h='restic -r $dir_bkp/apph --password-file $script_path/app-repo.pwd'
 alias dx_repo_j='restic -r $dir_bkp/appj --password-file $script_path/app-repo.pwd'
 
+# snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune, forget --keep-daily 240 --prune (оставляет только последние снапшоты для каждого из 240 дней)
 alias dx_log_h='less +G $dir_bkp/bkp_app_h.log'
 alias dx_log_j='less +G $dir_bkp/bkp_app_j.log'
 
@@ -105,7 +106,7 @@ bp_vm() {
     rsync -avh --delete --log-file=/mnt/ext_1Tb_25/bp_vm/rsync.log /mnt/vm/vm/ /mnt/ext_1Tb_25/bp_vm/
 }
 
-# snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune
+# snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune, forget --keep-daily 240 --prune (оставляет только последние снапшоты для каждого из 240 дней)
 alias do_data='restic -r $bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd'
 alias foget_data='restic -r /$bp_data/data_repo --password-file $script_path/home-bkp-repo.pwd forget --keep-last 20 --prune'
 
@@ -122,7 +123,7 @@ bp_job() {
 # добавить /home/cs/.config/libvirt - сохранённые состояния машин
 #   ???   alias rsync_vmj='rsync -avzh --delete-after /mnt/vm/gnome-boxes ...../vm'
 
-# snapshots, unlock, check, prune, mount ~/sys/restic, forget id_snap, forget --keep-last 5 --prune
+# snapshots, unlock, check, prune, mount ~/restic, forget id_snap, forget --keep-last 5 --prune, forget --keep-daily 240 --prune (оставляет только последние снапшоты для каждого из 240 дней)
 alias do_job='restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd'
 alias forget_job='restic -r $diryk_bkp/job --password-file $script_path/app-repo.pwd forget --keep-last 20 --prune'
 
