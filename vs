@@ -176,7 +176,7 @@ yt_dlp_outdir=/home/cs/download/video
 # alias ypl7='yt-dlp -S "res:720" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
 
 # плейлисты
-ypllist() { yt-dlp --flat-playlist --print '%(playlist_index)s. [[%(webpage_url)s][%(title)s]]' "$1" > playlist.org }
+ypllist() { yt-dlp --flat-playlist --print '%(playlist_index)s. [[%(webpage_url)s][%(title)s]]' "$(wl-paste)" > playlist.org }
 alias yplck='yt-dlp --cookies yck -S "res:720" -o "$yt_dlp_outdir/WatchLater/%(playlist_index)s - %(title)s" $1'
 alias ypl4='yt-dlp -S "res:480" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)'
 alias ypl7='yt-dlp -S "res:720" -o "$yt_dlp_outdir/pl/%(playlist_index)s - %(title)s" $(wl-paste)' 
