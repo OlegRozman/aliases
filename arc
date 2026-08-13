@@ -1,9 +1,9 @@
 
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
 tzst() { tar -caf $1.tar.zst $1 }
-etzst() { tar -xvf $1 }
-tgz() { tar -czvf $1.tar.gz $1 }
-etgz() { tar -xzvf $1 }
+etzst() { tar -xf $1 }
+tgz() { tar -czf $1.tar.gz $1 }
+etgz() { tar -xzf $1 }
 
 gtgz() { tar -czvf - $1 | gpg -c > $1.tar.gz.gpg }
 getgz() { gpg -d $1 | tar -xzvf - }
