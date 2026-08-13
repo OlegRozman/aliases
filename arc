@@ -1,7 +1,7 @@
 
 #    АРХИВАЦИЯ И ШИФРОВАНИЕ
-tarzst() { tar -caf $1.tar.zst $1 }
-
+tzst() { tar -caf $1.tar.zst $1 }
+etzst() { tar -xvf $1 }
 tgz() { tar -czvf $1.tar.gz $1 }
 etgz() { tar -xzvf $1 }
 
