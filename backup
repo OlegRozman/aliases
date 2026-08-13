@@ -19,8 +19,8 @@ bp_app_path=s3:https://s3.regru.cloud/backup/backup/app
 
 dir_bkp=/home/cs/Dropbox/bkp
 
-alias diff_pwd='diff -r . ~/app/org/roam'
-alias diff_latest='diff -r ~/sys/restic/snapshots/latest/home/cs/app/org/roam ~/app/org/roam'
+alias diff_pwd='diff -r . ~/app'
+alias diff_latest='diff -r ~/sys/restic/snapshots/latest/home/cs/app ~/app'
 
 
 # ................................ S3
