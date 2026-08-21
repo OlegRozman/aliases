@@ -238,8 +238,3 @@ alias ybt='yt-dlp $(wl-paste)'
 alias yaudio='yt-dlp -x $(wl-paste)' # качает лучшее качество
 alias ymp3='yt-dlp -x --audio-format mp3 $(wl-paste)'
 
-# subtitles
-ysub() {
-	yt-dlp --write-auto-subs --sub-langs $1 --skip-download "$(wl-paste)";
-	ffmpeg -i ~/download/video/*.vtt 
-}
