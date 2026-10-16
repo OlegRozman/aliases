@@ -1,14 +1,11 @@
 
-# cd ~/.aliases
-# git pull --rebase
-# git diff
-# git log -p | less
-# git add .
-# git status
-# git commit -m "comment"
-# git push
+# ................................ App
 
-# запустить команду без срабатывания алиаса - испз обрат слэш: \lsblk
+alias fd='fdfind'
+alias vi='nvim'
+alias yb='yandex-browser-stable --proxy-server="172.23.99.80:3128" --proxy-bypass-list="localhost,127.0.0.1,::1,172.16.0.0/12" > /dev/null 2>&1 & disown'
+
+
 
 
 # ................................   GIT    ................................ 
@@ -19,6 +16,16 @@ alias push='cd ~/.aliases; git diff; read; git add .; git commit -m "comment"; g
 # нажать q, потом enter
 # read -p "Продолжить? (Y/N): " confirm && [[ $confirm == [yY] || $confirm == [yY][eE][sS] ]] || exit 1;
 
+# cd ~/.aliases
+# git pull --rebase
+# git diff
+# git log -p | less
+# git add .
+# git status
+# git commit -m "comment"
+# git push
+
+# запустить команду без срабатывания алиаса - испз обрат слэш: \lsblk
 
 
 
@@ -140,11 +147,6 @@ mkdir_gen () {
 
 alias ptoc='pwd | wl-copy'
 
-
-# ................................ app others
-
-alias vi='nvim'
-alias yb='yandex-browser-stable --proxy-server="172.23.99.80:3128" --proxy-bypass-list="localhost,127.0.0.1,::1,172.16.0.0/12" > /dev/null 2>&1 & disown'
 
 
 # ................................ systemd
