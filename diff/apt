@@ -18,3 +18,4 @@ alias fd='fdfind'
 # sudo apt edit-sources              # Edit repository sources	
 # sudo apt full-upgrade              # Full system upgrade	
 
+alias bat='batcat'
