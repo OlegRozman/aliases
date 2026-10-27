@@ -38,9 +38,9 @@ ync() {
 
 nap() { source $script_path/s3_bp.key
 		echo && echo  "      HOME REPO" && 
-		restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p' && 
+		restic -r $bp_app_path/home --password-file $script_path/s3_app.pwd snapshots | grep -E '^[0-9a-f]{8}  [0-9]{4}-' | awk '{print $1, $2, $3}' | tail -n 3 && 
 		echo && echo "      JOB REPO" &&
-		restic -r  $bp_app_path/job --password-file $script_path/s3_app.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p'
+		restic  -r $bp_app_path/job --password-file $script_path/s3_app.pwd snapshots | grep -E '^[0-9a-f]{8}  [0-9]{4}-' | awk '{print $1, $2, $3}' | tail -n 3 && 
 }
 	
 
@@ -76,9 +76,9 @@ dx_nap() {
     fi &&
     echo && echo "------------------------------------------------" && 
     echo && echo  "      HOME REPO" && \
-    restic -r $dir_bkp/apph --password-file $script_path/app-repo.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p' &&
+    restic -r $dir_bkp/apph --password-file $script_path/app-repo.pwd snapshots | grep -E '^[0-9a-f]{8}  [0-9]{4}-' | awk '{print $1, $2, $3}' | tail -n 3 &&
     echo && echo "\n      JOB REPO" && \
-    restic -r $dir_bkp/appj --password-file $script_path/app-repo.pwd snapshots | tail -14 | awk '{print $1, $2, $3}' | sed -n '2p;6p;10p'
+    restic -r $dir_bkp/appj --password-file $script_path/app-repo.pwd snapshots | grep -E '^[0-9a-f]{8}  [0-9]{4}-' | awk '{print $1, $2, $3}' | tail -n 3
 }
 
 
